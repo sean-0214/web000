@@ -4,13 +4,6 @@ A modern, responsive personal website with integrated Content Management System 
 
 ## 🌟 Features
 
-### 🎨 Design & User Experience
-- **Modern Design**: Clean, professional layout with Saleh Hamadeh + Sahil Dua hybrid styling
-- **Responsive**: Fully responsive design that works on all devices
-- **Interactive Terminal**: Dynamic terminal animation showcasing achievements
-- **Smooth Navigation**: Smooth scrolling and active section highlighting
-- **Professional Color Scheme**: Black, white, and grey with colorful code blocks
-
 ### 📝 Content Management System
 - **Decap CMS Integration**: Visual editor for easy content management
 - **Real-time Editing**: Live preview of changes in the admin interface
