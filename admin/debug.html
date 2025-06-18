@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decap CMS Debug</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <div id="debug-info"></div>
+
+  <script>
+    // Function to display site structure
+    async function displaySiteStructure() {
+      const debugContainer = document.getElementById('debug-info');
+      
+      try {
+        // Try to load settings and about data
+        const settingsResponse = await fetch('/_data/settings.yml');
+        const settingsText = await settingsResponse.text();
+        
+        const aboutResponse = await fetch('/_data/about.yml');
+        const aboutText = await aboutResponse.text();
+        
+        // Display information
+        debugContainer.innerHTML = `
+          <h1>Decap CMS Debug Information</h1>
+          
+          <h2>Configuration Files</h2>
+          <h3>Settings.yml Access:</h3>
+          <pre>${settingsResponse.ok ? 'SUCCESS' : 'FAILED'} (Status: ${settingsResponse.status})</pre>
+          
+          <h3>About.yml Access:</h3>
+          <pre>${aboutResponse.ok ? 'SUCCESS' : 'FAILED'} (Status: ${aboutResponse.status})</pre>
+          
+          <h2>Content Structure</h2>
+          <ul>
+            <li>Projects folder: <code>content/projects</code></li>
+            <li>Experience folder: <code>content/experience</code></li>
+            <li>Data folder: <code>_data</code></li>
+          </ul>
+          
+          <h2>Admin Configuration</h2>
+          <p>Backend: git-gateway (branch: main)</p>
+          <p>Media folder: assets/images</p>
+          <p>Collections: config, projects, experience, pages</p>
+          
+          <h2>Content Access</h2>
+          <p>If you're seeing empty collections in the CMS, it may be due to:</p>
+          <ul>
+            <li>Backend access permissions issues</li>
+            <li>Git Gateway configuration</li>
+            <li>Branch mismatch between config and repository</li>
+            <li>File path differences between config and actual files</li>
+          </ul>
+        `;
+      } catch (error) {
+        debugContainer.innerHTML = `<h1>Error</h1><p>${error.message}</p>`;
+      }
+    }
+
+    // Check if the user is logged in
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            displaySiteStructure();
+          });
+        } else {
+          displaySiteStructure();
+        }
+      });
+    }
+  </script>
+</body>
+</html>

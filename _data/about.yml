@@ -1,0 +1,54 @@
+intro: "Passionate about applying machine learning and data science to discover investment opportunities and develop risk management strategies. Currently studying Computational Finance at City University of Hong Kong."
+
+terminal_commands:
+  - command: "whoami"
+    output: "Quantitative Finance Student"
+  - command: "cat achievements.txt"
+    output: "Global 1st Runner-up - Point 72 x Fidelity Competition"
+  - command: "cat achievements.txt"
+    output: "Top 10.08% - International Quant Championship"
+  - command: "cat achievements.txt"
+    output: "Ex-SFC Type 1 Licensed Professional"
+  - command: "python trade_alpha.py"
+    output: "Running alpha generation strategies..."
+
+skills:
+  - category: "Programming Languages"
+    items:
+      - "Python"
+      - "R"
+      - "SQL"
+      - "JavaScript"
+      - "C++"
+      - "MATLAB"
+  - category: "Financial Technologies"
+    items:
+      - "Bloomberg Terminal"
+      - "FactSet"
+      - "Wind Database"
+      - "Reuters Eikon"
+      - "Alpha Vantage"
+  - category: "Machine Learning"
+    items:
+      - "Scikit-learn"
+      - "TensorFlow"
+      - "PyTorch"
+      - "XGBoost"
+      - "Pandas"
+      - "NumPy"
+  - category: "Financial Modeling"
+    items:
+      - "Quantitative Analysis"
+      - "Risk Management"
+      - "Portfolio Optimization"
+      - "Derivatives Pricing"
+      - "Algorithmic Trading"
+
+interests:
+  - "Quantitative Finance"
+  - "Machine Learning"
+  - "Rock Climbing"
+  - "Violin Performance"
+  - "Volunteer Work"
+  - "Technology Innovation"
+

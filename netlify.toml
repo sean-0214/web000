@@ -1,0 +1,63 @@
+[build]
+  publish = "."
+  command = ""
+
+# Make sure admin resources are directly accessible
+[[redirects]]
+  from = "/admin/config.yml"
+  to = "/admin/config.yml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/admin/index.html"
+  to = "/admin/index.html"
+  status = 200
+  force = true
+  
+# Direct access to all files in admin folder
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/:splat"
+  status = 200
+
+# Redirect /admin to /admin/ - but only once
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+  force = true
+
+# Handle static assets directly
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/css/*"
+  to = "/css/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/js/*"
+  to = "/js/:splat"
+  status = 200
+
+# Handle other pages (SPA fallback)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Set security headers but allow frames for CMS admin
+[[headers]]
+  for = "/*"
+    [headers.values]
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/admin/*"
+    [headers.values]
+    X-Frame-Options = "SAMEORIGIN"

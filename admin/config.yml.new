@@ -1,0 +1,108 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+# Enable local backend for development
+local_backend: true
+
+# Enable editorial workflow for content review
+publish_mode: editorial_workflow
+
+# Site URL for previews
+site_url: https://sean-chiang-personal-site.windsurf.build
+
+collections:
+  - name: "config"
+    label: "Site Configuration"
+    files:
+      - label: "Site Settings"
+        name: "settings"
+        file: "_data/settings.yml"
+        editor:
+          preview: false
+        fields:
+          - {label: "Site Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "text"}
+          - {label: "Author Name", name: "author", widget: "string"}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "LinkedIn URL", name: "linkedin", widget: "string"}
+          - {label: "GitHub URL", name: "github", widget: "string"}
+          - {label: "Resume URL", name: "resume", widget: "string"}
+          - {label: "Profile Image", name: "profile_image", widget: "image"}
+
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: true
+    summary: "{{title}} - {{subtitle}}"
+    sortable_fields: ['order', 'title', 'date']
+    view_filters:
+      - label: "Featured Projects"
+        field: featured
+        pattern: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Subtitle", name: "subtitle", widget: "string"}
+      - {label: "Organization", name: "organization", widget: "string"}
+      - {label: "Achievement", name: "achievement", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+      - {label: "Order", name: "order", widget: "number", default: 1}
+      - {label: "Tags", name: "tags", widget: "list", allow_add: true}
+      - {label: "Short Description", name: "short_description", widget: "text"}
+      - {label: "Hero Image", name: "hero_image", widget: "image", required: false}
+      - {label: "Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}, required: false}
+      - {label: "Videos", name: "videos", widget: "list", field: {label: "Video URL", name: "video", widget: "string"}, required: false}
+      - {label: "Documents", name: "documents", widget: "list", fields: [{label: "Title", name: "title", widget: "string"}, {label: "File", name: "file", widget: "file"}], required: false}
+      - {label: "Content", name: "body", widget: "markdown"}
+      - {label: "Key Achievements", name: "achievements", widget: "list", allow_add: true, required: false}
+      - {label: "Technologies Used", name: "technologies", widget: "list", allow_add: true, required: false}
+      - {label: "Project Links", name: "links", widget: "list", fields: [{label: "Title", name: "title", widget: "string"}, {label: "URL", name: "url", widget: "string"}, {label: "Type", name: "type", widget: "select", options: ["primary", "secondary", "demo", "github", "documentation"]}], required: false}
+
+  - name: "experience"
+    label: "Experience"
+    folder: "content/experience"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: true
+    summary: "{{title}} - {{position}}"
+    sortable_fields: ['order', 'title', 'start_date']
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Position", name: "position", widget: "string"}
+      - {label: "Organization", name: "organization", widget: "string"}
+      - {label: "Start Date", name: "start_date", widget: "datetime"}
+      - {label: "End Date", name: "end_date", widget: "datetime", required: false}
+      - {label: "Current Position", name: "current", widget: "boolean", default: false}
+      - {label: "Location", name: "location", widget: "string"}
+      - {label: "Order", name: "order", widget: "number", default: 1}
+      - {label: "Short Description", name: "short_description", widget: "text"}
+      - {label: "Hero Image", name: "hero_image", widget: "image", required: false}
+      - {label: "Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}, required: false}
+      - {label: "Videos", name: "videos", widget: "list", field: {label: "Video URL", name: "video", widget: "string"}, required: false}
+      - {label: "Documents", name: "documents", widget: "list", fields: [{label: "Title", name: "title", widget: "string"}, {label: "File", name: "file", widget: "file"}], required: false}
+      - {label: "Content", name: "body", widget: "markdown"}
+      - {label: "Key Responsibilities", name: "responsibilities", widget: "list", allow_add: true, required: false}
+      - {label: "Key Achievements", name: "achievements", widget: "list", allow_add: true, required: false}
+      - {label: "Skills Developed", name: "skills", widget: "list", allow_add: true, required: false}
+
+  - name: "pages"
+    label: "Pages"
+    editor:
+      preview: false
+    files:
+      - label: "About"
+        name: "about"
+        file: "_data/about.yml"
+        fields:
+          - {label: "Intro Text", name: "intro", widget: "text"}
+          - {label: "Terminal Commands", name: "terminal_commands", widget: "list", fields: [{label: "Command", name: "command", widget: "string"}, {label: "Output", name: "output", widget: "string"}]}
+          - {label: "Skills", name: "skills", widget: "list", fields: [{label: "Category", name: "category", widget: "string"}, {label: "Items", name: "items", widget: "list", allow_add: true}]}
+          - {label: "Interests", name: "interests", widget: "list", allow_add: true}
