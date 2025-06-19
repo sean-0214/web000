@@ -1,0 +1,23 @@
+{
+  "name": "sean-chiang-website",
+  "version": "1.0.0",
+  "description": "Sean Chiang's personal website with Decap CMS integration",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "npm run build && http-server -p 8080"
+  },
+  "keywords": [
+    "portfolio",
+    "decap-cms",
+    "netlify"
+  ],
+  "author": "Sean Chiang",
+  "license": "MIT",
+  "dependencies": {
+    "glob": "^8.0.3",
+    "http-server": "^14.1.1",
+    "js-yaml": "^4.1.0",
+    "marked": "^4.2.4"
+  }
+}

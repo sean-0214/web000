@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}} - Sean Chiang</title>
+    <meta name="description" content="Sean Chiang's experience as {{position}} at {{organization}}.">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">Sean Chiang</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#experience">Experience</a></li>
+                    <li><a href="../index.html#skills">Skills</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Experience Detail Hero -->
+    <section class="project-detail-hero">
+        <div class="container">
+            <a href="../index.html#experience" class="back-button">← Back to Experience</a>
+            <h1>{{position}}</h1>
+            <p class="subtitle">{{organization}} • {{start_date}} - {{end_date}}</p>
+            <p class="achievement">{{location}}</p>
+        </div>
+    </section>
+
+    <!-- Experience Content -->
+    <div class="project-detail-content">
+        {{#if hero_image}}
+        <div class="hero-image">
+            <img src="{{hero_image}}" alt="{{title}}">
+        </div>
+        {{/if}}
+
+        <div class="project-detail-section">
+            {{content}}
+        </div>
+
+        {{#if responsibilities}}
+        <div class="project-detail-section">
+            <h2>Key Responsibilities</h2>
+            {{responsibilities}}
+        </div>
+        {{/if}}
+
+        {{#if achievements}}
+        <div class="project-detail-section">
+            <h2>Achievements</h2>
+            {{achievements}}
+        </div>
+        {{/if}}
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

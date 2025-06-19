@@ -1,6 +1,6 @@
 [build]
   publish = "."
-  command = ""
+  command = "npm install && node build.js"
 
 # Make sure admin resources are directly accessible
 [[redirects]]

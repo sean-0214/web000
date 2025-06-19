@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{site_title}}</title>
+    <meta name="description" content="{{description}}">
+    <meta name="keywords" content="Sean Chiang, Quantitative Finance, Machine Learning, Data Science, Investment, Hong Kong">
+    <meta name="author" content="{{author}}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seanchiang.com/">
+    <meta property="og:title" content="{{site_title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:image" content="{{profile_image}}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://seanchiang.com/">
+    <meta property="twitter:title" content="{{site_title}}">
+    <meta property="twitter:description" content="{{description}}">
+    <meta property="twitter:image" content="{{profile_image}}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">Sean Chiang</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-intro">
+                <div class="hero-text">
+                    <h1 class="hero-title">{{site_title}}</h1>
+                    <p class="hero-subtitle">{{description}}</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn primary-btn">Contact Me</a>
+                        <a href="{{resume}}" target="_blank" class="btn secondary-btn">View Resume</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="{{profile_image}}" alt="{{author}} Profile Photo" class="profile-img">
+                </div>
+            </div>
+            
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="terminal-btn close"></span>
+                        <span class="terminal-btn minimize"></span>
+                        <span class="terminal-btn expand"></span>
+                    </div>
+                    <div class="terminal-title">sean@portfolio ~ %</div>
+                </div>
+                <div class="terminal-body">
+                    {{terminal_commands}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section fade-in">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            {{projects}}
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section fade-in">
+        <h2>Professional Experience</h2>
+        <div class="timeline">
+            {{experience}}
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section fade-in">
+        <h2>Technical Skills</h2>
+        <div class="skills-container">
+            {{skills}}
+        </div>
+    </section>
+    
+    <!-- Interests Section -->
+    <section id="interests" class="section fade-in">
+        <h2>Interests & Activities</h2>
+        <div class="interests-container">
+            {{interests}}
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section fade-in">
+        <h2>Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <p><a href="mailto:{{email}}">{{email}}</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                    <div class="contact-text">
+                        <h3>LinkedIn</h3>
+                        <p><a href="{{linkedin}}" target="_blank">Connect on LinkedIn</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fab fa-github"></i></div>
+                    <div class="contact-text">
+                        <h3>GitHub</h3>
+                        <p><a href="{{github}}" target="_blank">View Projects</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 {{author}}. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
