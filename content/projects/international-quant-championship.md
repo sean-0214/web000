@@ -1,5 +1,5 @@
 ---
-title: International Quant Championship 2024
+title: International Quant Championship 20242025
 subtitle: WorldQuant Global Competition
 organization: WorldQuant
 achievement: Global Top 10.08%
