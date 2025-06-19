@@ -1,435 +1,864 @@
-/**
- * Sean Chiang Website Build Script
- * 
- * This script processes content files managed by Decap CMS and injects
- * their content into HTML templates to generate the final website.
- */
-
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
-const marked = require('marked');
-const glob = require('glob');
-
-// Paths
-const contentProjectsDir = path.join(__dirname, 'content/projects');
-const contentExperienceDir = path.join(__dirname, 'content/experience');
-const dataDir = path.join(__dirname, 'content');
-const contentDir = path.join(__dirname, 'content');
-const projectsOutputDir = path.join(__dirname, 'projects');
-const experienceOutputDir = path.join(__dirname, 'experience');
-
-// Ensure output directories exist
-if (!fs.existsSync(projectsOutputDir)) {
-  fs.mkdirSync(projectsOutputDir, { recursive: true });
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-if (!fs.existsSync(experienceOutputDir)) {
-  fs.mkdirSync(experienceOutputDir, { recursive: true });
+:root {
+    --primary-color: #333;
+    --secondary-color: #666;
+    --accent-color: #000;
+    --background-color: #fff;
+    --light-gray: #f8f9fa;
+    --border-color: #e1e5e9;
+    --text-color: #333;
+    --text-light: #555;
+    --text-muted: #666;
+    --terminal-bg: #2d3748;
+    --terminal-header: #4a5568;
+    --terminal-text: #e2e8f0;
+    --terminal-prompt: #68d391;
+    --terminal-command: #90cdf4;
+    --terminal-output: #fbb6ce;
+    --terminal-highlight: #ffd700;
 }
 
-// Load template HTML files
-const projectTemplate = fs.readFileSync(path.join(__dirname, 'templates/project.html'), 'utf8');
-const experienceTemplate = fs.readFileSync(path.join(__dirname, 'templates/experience.html'), 'utf8');
-const indexTemplate = fs.readFileSync(path.join(__dirname, 'templates/index.html'), 'utf8');
-
-// Parse frontmatter from markdown files
-function parseFrontmatter(fileContent) {
-  const matches = fileContent.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!matches) return { attributes: {}, body: fileContent };
-  
-  try {
-    const attributes = yaml.load(matches[1]);
-    const body = matches[2];
-    return { attributes, body };
-  } catch (e) {
-    console.error('Error parsing frontmatter:', e);
-    return { attributes: {}, body: fileContent };
-  }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
-// Process markdown to HTML
-function processMarkdown(content) {
-  return marked.parse(content);
+/* Header Navigation */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    padding: 15px 0;
 }
 
-// Process all project files
-function processProjects() {
-  console.log('Processing projects...');
-  const projectFiles = glob.sync(path.join(contentProjectsDir, '*.md'));
-  const projects = [];
-  
-  projectFiles.forEach(filePath => {
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const { attributes, body } = parseFrontmatter(fileContent);
-    const htmlContent = processMarkdown(body);
-    
-    projects.push({
-      ...attributes,
-      content: htmlContent,
-      slug: path.basename(filePath, '.md')
-    });
-    
-    // Generate individual project page
-    let projectHtml = projectTemplate
-      .replace(/{{title}}/g, attributes.title || 'Project')
-      .replace(/{{subtitle}}/g, attributes.subtitle || '')
-      .replace(/{{organization}}/g, attributes.organization || '')
-      .replace(/{{achievement}}/g, attributes.achievement || '')
-      .replace(/{{date}}/g, attributes.date ? new Date(attributes.date).toLocaleDateString() : '')
-      .replace(/{{content}}/g, htmlContent)
-      .replace(/{{hero_image}}/g, attributes.hero_image || '');
-    
-    // Handle technologies
-    if (attributes.technologies && attributes.technologies.length) {
-      let techHtml = '<ul class="technologies-list">';
-      attributes.technologies.forEach(tech => {
-        techHtml += `<li>${tech}</li>`;
-      });
-      techHtml += '</ul>';
-      projectHtml = projectHtml.replace(/{{technologies}}/g, techHtml);
-    } else {
-      projectHtml = projectHtml.replace(/{{technologies}}/g, '');
-    }
-    
-    // Handle project links
-    if (attributes.links && attributes.links.length) {
-      let linksHtml = '<div class="project-links">';
-      attributes.links.forEach(link => {
-        linksHtml += `<a href="${link.url}" class="project-link ${link.type}">${link.title}</a>`;
-      });
-      linksHtml += '</div>';
-      projectHtml = projectHtml.replace(/{{project_links}}/g, linksHtml);
-    } else {
-      projectHtml = projectHtml.replace(/{{project_links}}/g, '');
-    }
-    
-    fs.writeFileSync(path.join(projectsOutputDir, `${attributes.slug || path.basename(filePath, '.md')}.html`), projectHtml);
-  });
-  
-  // Sort projects by order field
-  projects.sort((a, b) => (a.order || 999) - (b.order || 999));
-  
-  return projects;
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
-// Process all experience files
-function processExperience() {
-  console.log('Processing experience...');
-  const experienceFiles = glob.sync(path.join(contentExperienceDir, '*.md'));
-  const experiences = [];
-  
-  experienceFiles.forEach(filePath => {
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const { attributes, body } = parseFrontmatter(fileContent);
-    const htmlContent = processMarkdown(body);
-    
-    experiences.push({
-      ...attributes,
-      content: htmlContent,
-      slug: path.basename(filePath, '.md')
-    });
-    
-    // Generate individual experience page
-    let experienceHtml = experienceTemplate
-      .replace(/{{title}}/g, attributes.title || 'Experience')
-      .replace(/{{position}}/g, attributes.position || '')
-      .replace(/{{organization}}/g, attributes.organization || '')
-      .replace(/{{location}}/g, attributes.location || '')
-      .replace(/{{start_date}}/g, attributes.start_date ? new Date(attributes.start_date).toLocaleDateString() : '')
-      .replace(/{{end_date}}/g, attributes.end_date ? new Date(attributes.end_date).toLocaleDateString() : 'Present')
-      .replace(/{{content}}/g, htmlContent)
-      .replace(/{{hero_image}}/g, attributes.hero_image || '');
-    
-    if (attributes.responsibilities && attributes.responsibilities.length) {
-      let respHtml = '<ul class="responsibilities-list">';
-      attributes.responsibilities.forEach(resp => {
-        respHtml += `<li>${resp}</li>`;
-      });
-      respHtml += '</ul>';
-      experienceHtml = experienceHtml.replace(/{{responsibilities}}/g, respHtml);
-    } else {
-      experienceHtml = experienceHtml.replace(/{{responsibilities}}/g, '');
-    }
-    
-    if (attributes.achievements && attributes.achievements.length) {
-      let achHtml = '<ul class="achievements-list">';
-      attributes.achievements.forEach(ach => {
-        achHtml += `<li>${ach}</li>`;
-      });
-      achHtml += '</ul>';
-      experienceHtml = experienceHtml.replace(/{{achievements}}/g, achHtml);
-    } else {
-      experienceHtml = experienceHtml.replace(/{{achievements}}/g, '');
-    }
-    
-    fs.writeFileSync(path.join(experienceOutputDir, `${attributes.slug || path.basename(filePath, '.md')}.html`), experienceHtml);
-  });
-  
-  // Sort experiences by order field
-  experiences.sort((a, b) => (a.order || 999) - (b.order || 999));
-  
-  return experiences;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
 }
 
-// Process site settings
-function processSettings() {
-  console.log('Processing site settings...');
-  const settingsPath = path.join(dataDir, 'settings.yml');
-  if (!fs.existsSync(settingsPath)) {
-    console.warn('Settings file not found');
-    return {};
-  }
-  
-  const settingsContent = fs.readFileSync(settingsPath, 'utf8');
-  return yaml.load(settingsContent);
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
 }
 
-// Process about page data
-function processAbout() {
-  console.log('Processing about data...');
-  const aboutPath = path.join(dataDir, 'about.yml');
-  if (!fs.existsSync(aboutPath)) {
-    console.warn('About file not found');
-    return {};
-  }
-  
-  const aboutContent = fs.readFileSync(aboutPath, 'utf8');
-  return yaml.load(aboutContent);
+.nav-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
 }
 
-// Generate index page
-function generateIndexPage(projects, experiences, settings, about) {
-  console.log('Generating index page...');
-  let indexHtml = indexTemplate;
-  
-  // Replace settings data
-  if (settings) {
-    indexHtml = indexHtml.replace(/{{site_title}}/g, settings.title || 'Sean Chiang')
-      .replace(/{{description}}/g, settings.description || '')
-      .replace(/{{author}}/g, settings.author || 'Sean Chiang')
-      .replace(/{{profile_image}}/g, settings.profile_image || '')
-      .replace(/{{email}}/g, settings.email || '')
-      .replace(/{{linkedin}}/g, settings.linkedin || '#')
-      .replace(/{{github}}/g, settings.github || '#')
-      .replace(/{{resume}}/g, settings.resume || '#');
-  }
-  
-  // Replace about data
-  if (about) {
-    indexHtml = indexHtml.replace(/{{about_intro}}/g, about.intro || '');
-    
-    // Terminal commands
-    if (about.terminal_commands && about.terminal_commands.length) {
-      let commandsHtml = '';
-      about.terminal_commands.forEach((cmd, index) => {
-        // Add command with prompt
-        commandsHtml += `<div class="terminal-line"><span class="terminal-prompt">$</span> <span class="terminal-command">${cmd.command}</span></div>`;
-        
-        // Add output with color variations
-        let output = cmd.output;
-        
-        // Add some yellow highlights for important parts in the output
-        if (index === 0) { // For whoami command
-          output = `<span class="terminal-highlight">Quantitative Finance</span> Student`;
-        } else if (index <= 3) { // For achievement commands
-          // Extract the achievement parts to highlight
-          if (output.includes('Point 72')) {
-            output = output.replace('Point 72', `<span class="terminal-highlight">Point 72</span>`);
-          } else if (output.includes('Top 10.08%')) {
-            output = output.replace('Top 10.08%', `<span class="terminal-highlight">Top 10.08%</span>`);
-          } else if (output.includes('Ex-SFC')) {
-            output = output.replace('Ex-SFC', `<span class="terminal-highlight">Ex-SFC</span>`);
-          }
-        } else if (index === 4) { // For the Python command
-          output = `Running <span class="terminal-highlight">alpha generation</span> strategies...`;
-        }
-        
-        commandsHtml += `<div class="terminal-output">${output}</div>`;
-      });
-      indexHtml = indexHtml.replace(/{{terminal_commands}}/g, commandsHtml);
-    } else {
-      indexHtml = indexHtml.replace(/{{terminal_commands}}/g, '');
-    }
-    
-    // About intro
-    if (about.intro) {
-      indexHtml = indexHtml.replace(/{{about_intro}}/g, about.intro);
-    } else {
-      indexHtml = indexHtml.replace(/{{about_intro}}/g, '');
-    }
-    
-    // Skills
-    if (about.skills && about.skills.length) {
-      let skillsHtml = '';
-      about.skills.forEach(skillCategory => {
-        skillsHtml += `
-          <div class="skill-category">
-            <h3>${skillCategory.category}</h3>
-            <ul class="skill-list">`;
-        
-        if (skillCategory.items && skillCategory.items.length) {
-          skillCategory.items.forEach(skill => {
-            skillsHtml += `<li>${skill}</li>`;
-          });
-        }
-        
-        skillsHtml += `
-            </ul>
-          </div>`;
-      });
-      
-      indexHtml = indexHtml.replace(/{{skills}}/g, skillsHtml);
-    } else {
-      indexHtml = indexHtml.replace(/{{skills}}/g, '');
-    }
-    
-    // Interests
-    if (about.interests && about.interests.length) {
-      let interestsHtml = '';
-      
-      about.interests.forEach(interest => {
-        if (typeof interest === 'object') {
-          interestsHtml += `
-            <div class="interest-item">
-              <div class="interest-name">${interest.name}</div>
-              <div class="interest-description">${interest.description}</div>
-            </div>`;
-        } else {
-          interestsHtml += `
-            <div class="interest-item">
-              <div class="interest-name">${interest}</div>
-            </div>`;
-        }
-      });
-      
-      indexHtml = indexHtml.replace(/{{interests}}/g, interestsHtml);
-    } else {
-      indexHtml = indexHtml.replace(/{{interests}}/g, '');
-    }
-  }
-  
-  // Projects
-  if (projects && projects.length) {
-    let projectsHtml = '';
-    projects.forEach(project => {
-      projectsHtml += `
-        <a href="/projects/${project.slug}.html" class="project-card-link">
-          <div class="project-card${project.featured ? ' featured' : ''}" data-project-id="${project.slug}">
-            <h3 class="project-title">${project.title}</h3>
-            <p class="project-subtitle">${project.organization || ''} ${project.achievement ? '• ' + project.achievement : ''}</p>
-            <p class="project-description">
-              ${project.short_description || ''}
-            </p>
-            <div class="project-footer">
-              <div class="project-tags">
-                ${project.tags && project.tags.length ? project.tags.slice(0, 3).map(tag => `<span class="tag">${tag}</span>`).join('') : ''}
-              </div>
-            </div>
-          </div>
-        </a>`;
-    });
-    indexHtml = indexHtml.replace(/{{projects}}/g, projectsHtml);
-  } else {
-    indexHtml = indexHtml.replace(/{{projects}}/g, '');
-  }
-  
-  // Experience
-  if (experiences && experiences.length) {
-    let experienceHtml = '';
-    experiences.forEach(exp => {
-      experienceHtml += `
-        <a href="/experience/${exp.slug}.html" class="timeline-item-link">
-          <div class="timeline-item">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <div class="timeline-date">${exp.start_date || ''} — ${exp.end_date || 'Present'}</div>
-              <h3 class="timeline-title">${exp.position || ''}</h3>
-              <p class="timeline-company">${exp.organization || ''} • ${exp.location || ''}</p>
-              <p class="timeline-description">${exp.short_description || ''}</p>
-            </div>
-          </div>
-        </a>`;
-    });
-    indexHtml = indexHtml.replace(/{{experience}}/g, experienceHtml);
-  } else {
-    indexHtml = indexHtml.replace(/{{experience}}/g, '');
-  }
-  
-  fs.writeFileSync(path.join(__dirname, 'index.html'), indexHtml);
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--accent-color);
 }
 
-// Main build process
-console.log('Starting build process...');
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
 
-try {
-  // Extract templates from existing HTML first
-  console.log('Extracting templates from existing HTML...');
-  
-  // Extract project template from an existing project page if template doesn't exist
-  if (!fs.existsSync(path.join(__dirname, 'templates/project.html'))) {
-    console.log('Creating project template from existing project page...');
-    const projectFiles = glob.sync(path.join(__dirname, 'projects/*.html'));
-    if (projectFiles.length > 0) {
-      // Create templates directory if it doesn't exist
-      if (!fs.existsSync(path.join(__dirname, 'templates'))) {
-        fs.mkdirSync(path.join(__dirname, 'templates'), { recursive: true });
-      }
-      
-      const projectHtml = fs.readFileSync(projectFiles[0], 'utf8');
-      fs.writeFileSync(path.join(__dirname, 'templates/project.html'), projectHtml);
-    } else {
-      console.error('No existing project HTML files found to use as template');
-      process.exit(1);
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px 20px;
+    background: linear-gradient(135deg, var(--light-gray) 0%, var(--background-color) 100%);
+}
+
+.hero-container {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    line-height: 1.7;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a.social-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    transform: translateY(-2px);
+}
+
+/* Terminal/Code Block */
+.terminal-container {
+    background: var(--terminal-bg);
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+.terminal-header {
+    background: var(--terminal-header);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.terminal-button.close { background: #ff5f56; }
+.terminal-button.minimize { background: #ffbd2e; }
+.terminal-button.maximize { background: #27ca3f; }
+
+.terminal-title {
+    margin-left: 10px;
+    color: var(--terminal-text);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.terminal-content {
+    padding: 20px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--terminal-text);
+    background: var(--terminal-bg);
+}
+
+.terminal-line {
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.terminal-line:nth-child(1) { animation-delay: 0.5s; }
+.terminal-line:nth-child(2) { animation-delay: 1s; }
+.terminal-line:nth-child(3) { animation-delay: 1.5s; }
+.terminal-line:nth-child(4) { animation-delay: 2s; }
+.terminal-line:nth-child(5) { animation-delay: 2.5s; }
+.terminal-line:nth-child(6) { animation-delay: 3s; }
+
+.terminal-prompt {
+    color: var(--terminal-prompt);
+}
+
+.terminal-command {
+    color: var(--terminal-command);
+}
+
+.terminal-output {
+    color: var(--terminal-output);
+    margin-bottom: 15px;
+}
+
+.terminal-highlight {
+    color: var(--terminal-highlight);
+    font-weight: bold;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-  }
-  
-  // Extract experience template from an existing experience page
-  if (!fs.existsSync(path.join(__dirname, 'templates/experience.html'))) {
-    console.log('Creating experience template from existing experience page...');
-    const expFiles = glob.sync(path.join(__dirname, 'experience/*.html'));
-    if (expFiles.length > 0) {
-      // Create templates directory if it doesn't exist
-      if (!fs.existsSync(path.join(__dirname, 'templates'))) {
-        fs.mkdirSync(path.join(__dirname, 'templates'), { recursive: true });
-      }
-      
-      const expHtml = fs.readFileSync(expFiles[0], 'utf8');
-      fs.writeFileSync(path.join(__dirname, 'templates/experience.html'), expHtml);
-    } else {
-      console.error('No existing experience HTML files found to use as template');
-      process.exit(1);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
-  // Extract index template
-  if (!fs.existsSync(path.join(__dirname, 'templates/index.html'))) {
-    console.log('Creating index template from existing index page...');
-    if (fs.existsSync(path.join(__dirname, 'index.html'))) {
-      // Create templates directory if it doesn't exist
-      if (!fs.existsSync(path.join(__dirname, 'templates'))) {
-        fs.mkdirSync(path.join(__dirname, 'templates'), { recursive: true });
-      }
-      
-      const indexHtml = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
-      fs.writeFileSync(path.join(__dirname, 'templates/index.html'), indexHtml);
-    } else {
-      console.error('No existing index.html found to use as template');
-      process.exit(1);
+}
+
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Sections */
+.section {
+    padding: 80px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.light-section {
+    background-color: var(--light-gray);
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.project-card {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
+}
+
+.project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.project-link {
+    font-weight: 500;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.project-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.project-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.project-description {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    background: var(--light-gray);
+    color: var(--text-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
+/* Experience Timeline */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.timeline-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin-left: 30px;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -46px;
+    top: 25px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 3px solid var(--background-color);
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -46px;
+    top: 25px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 3px solid var(--background-color);
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.timeline-content {
+    position: relative;
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.timeline-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 5px;
+}
+
+.timeline-company {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.timeline-description {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.skill-category {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.skill-category h3 {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.skill-category h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.skill-list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.skill-list li {
+    margin-bottom: 8px;
+    color: var(--text-light);
+    position: relative;
+    padding-left: 20px;
+}
+
+.skill-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Interests Section */
+.interests-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.interest-item {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.interest-item:hover {
+    background: var(--primary-color);
+    color: var(--background-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 80px 20px;
+    background-color: var(--light-gray);
+}
+
+.contact-description {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: var(--text-light);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.contact-card h3 {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 12px;
+}
+
+.contact-card p a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-card p a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.contact-section h2 {
+    margin-bottom: 20px;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: var(--primary-color);
+    color: var(--background-color);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.contact-btn.secondary {
+    background: var(--background-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.contact-btn.secondary:hover {
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+/* Footer */
+.footer {
+    padding: 30px 0;
+    text-align: center;
+    background-color: var(--light-gray);
+}
+
+.copyright {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
     }
-  }
-  
-  // Process all content and data
-  const projects = processProjects();
-  const experiences = processExperience();
-  const settings = processSettings();
-  const about = processAbout();
-  
-  // Generate the main index page
-  generateIndexPage(projects, experiences, settings, about);
-  
-  console.log('Build completed successfully!');
-} catch (error) {
-  console.error('Build failed:', error);
-  process.exit(1);
+
+    .nav-menu {
+        gap: 20px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline {
+        padding-left: 20px;
+    }
+
+    .timeline-item {
+        margin-left: 20px;
+    }
+
+    .timeline-item::before {
+        left: -36px;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Project Detail Page Styles */
+.project-detail-hero {
+    padding: 120px 20px 60px;
+    background: linear-gradient(135deg, var(--light-gray) 0%, var(--background-color) 100%);
+    text-align: center;
+}
+
+.project-detail-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.project-detail-hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.project-detail-hero .achievement {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.project-detail-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.project-detail-section {
+    margin-bottom: 50px;
+}
+
+.project-detail-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.project-detail-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.media-placeholder {
+    background: var(--light-gray);
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin: 30px 0;
+    color: var(--text-muted);
+}
+
+.media-placeholder h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.media-placeholder p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: var(--background-color);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-bottom: 40px;
+}
+
+.back-button:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.project-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--light-gray);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+.project-link.primary {
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+.project-link.primary:hover {
+    background: var(--accent-color);
 }
