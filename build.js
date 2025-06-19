@@ -14,7 +14,8 @@ const glob = require('glob');
 // Paths
 const contentProjectsDir = path.join(__dirname, 'content/projects');
 const contentExperienceDir = path.join(__dirname, 'content/experience');
-const dataDir = path.join(__dirname, '_data');
+const dataDir = path.join(__dirname, 'content');
+const contentDir = path.join(__dirname, 'content');
 const projectsOutputDir = path.join(__dirname, 'projects');
 const experienceOutputDir = path.join(__dirname, 'experience');
 
@@ -221,27 +222,63 @@ function generateIndexPage(projects, experiences, settings, about) {
     // Terminal commands
     if (about.terminal_commands && about.terminal_commands.length) {
       let commandsHtml = '';
-      about.terminal_commands.forEach(cmd => {
-        commandsHtml += `<div class="terminal-line"><span class="prompt">$</span> ${cmd.command}</div>`;
-        commandsHtml += `<div class="terminal-output">${cmd.output}</div>`;
+      about.terminal_commands.forEach((cmd, index) => {
+        // Add command with prompt
+        commandsHtml += `<div class="terminal-line"><span class="terminal-prompt">$</span> <span class="terminal-command">${cmd.command}</span></div>`;
+        
+        // Add output with color variations
+        let output = cmd.output;
+        
+        // Add some yellow highlights for important parts in the output
+        if (index === 0) { // For whoami command
+          output = `<span class="terminal-highlight">Quantitative Finance</span> Student`;
+        } else if (index <= 3) { // For achievement commands
+          // Extract the achievement parts to highlight
+          if (output.includes('Point 72')) {
+            output = output.replace('Point 72', `<span class="terminal-highlight">Point 72</span>`);
+          } else if (output.includes('Top 10.08%')) {
+            output = output.replace('Top 10.08%', `<span class="terminal-highlight">Top 10.08%</span>`);
+          } else if (output.includes('Ex-SFC')) {
+            output = output.replace('Ex-SFC', `<span class="terminal-highlight">Ex-SFC</span>`);
+          }
+        } else if (index === 4) { // For the Python command
+          output = `Running <span class="terminal-highlight">alpha generation</span> strategies...`;
+        }
+        
+        commandsHtml += `<div class="terminal-output">${output}</div>`;
       });
       indexHtml = indexHtml.replace(/{{terminal_commands}}/g, commandsHtml);
     } else {
       indexHtml = indexHtml.replace(/{{terminal_commands}}/g, '');
     }
     
+    // About intro
+    if (about.intro) {
+      indexHtml = indexHtml.replace(/{{about_intro}}/g, about.intro);
+    } else {
+      indexHtml = indexHtml.replace(/{{about_intro}}/g, '');
+    }
+    
     // Skills
     if (about.skills && about.skills.length) {
       let skillsHtml = '';
-      about.skills.forEach(skill => {
-        skillsHtml += `<div class="skill-category"><h3>${skill.category}</h3><ul>`;
-        if (skill.items && skill.items.length) {
-          skill.items.forEach(item => {
-            skillsHtml += `<li>${item}</li>`;
+      about.skills.forEach(skillCategory => {
+        skillsHtml += `
+          <div class="skill-category">
+            <h3>${skillCategory.category}</h3>
+            <ul class="skill-list">`;
+        
+        if (skillCategory.items && skillCategory.items.length) {
+          skillCategory.items.forEach(skill => {
+            skillsHtml += `<li>${skill}</li>`;
           });
         }
-        skillsHtml += '</ul></div>';
+        
+        skillsHtml += `
+            </ul>
+          </div>`;
       });
+      
       indexHtml = indexHtml.replace(/{{skills}}/g, skillsHtml);
     } else {
       indexHtml = indexHtml.replace(/{{skills}}/g, '');
@@ -249,11 +286,23 @@ function generateIndexPage(projects, experiences, settings, about) {
     
     // Interests
     if (about.interests && about.interests.length) {
-      let interestsHtml = '<ul class="interests-list">';
+      let interestsHtml = '';
+      
       about.interests.forEach(interest => {
-        interestsHtml += `<li>${interest}</li>`;
+        if (typeof interest === 'object') {
+          interestsHtml += `
+            <div class="interest-item">
+              <div class="interest-name">${interest.name}</div>
+              <div class="interest-description">${interest.description}</div>
+            </div>`;
+        } else {
+          interestsHtml += `
+            <div class="interest-item">
+              <div class="interest-name">${interest}</div>
+            </div>`;
+        }
       });
-      interestsHtml += '</ul>';
+      
       indexHtml = indexHtml.replace(/{{interests}}/g, interestsHtml);
     } else {
       indexHtml = indexHtml.replace(/{{interests}}/g, '');
@@ -265,21 +314,20 @@ function generateIndexPage(projects, experiences, settings, about) {
     let projectsHtml = '';
     projects.forEach(project => {
       projectsHtml += `
-        <div class="project-card${project.featured ? ' featured' : ''}">
-          <div class="project-image">
-            <img src="${project.hero_image || '/assets/images/default-project.jpg'}" alt="${project.title}">
-          </div>
-          <div class="project-content">
+        <a href="/projects/${project.slug}.html" class="project-card-link">
+          <div class="project-card${project.featured ? ' featured' : ''}" data-project-id="${project.slug}">
             <h3 class="project-title">${project.title}</h3>
-            <h4 class="project-subtitle">${project.subtitle}</h4>
-            <p class="project-description">${project.short_description}</p>
-            <div class="project-meta">
-              <span class="project-organization">${project.organization}</span>
-              <span class="project-date">${project.date ? new Date(project.date).toLocaleDateString() : ''}</span>
+            <p class="project-subtitle">${project.organization || ''} ${project.achievement ? '• ' + project.achievement : ''}</p>
+            <p class="project-description">
+              ${project.short_description || ''}
+            </p>
+            <div class="project-footer">
+              <div class="project-tags">
+                ${project.tags && project.tags.length ? project.tags.slice(0, 3).map(tag => `<span class="tag">${tag}</span>`).join('') : ''}
+              </div>
             </div>
-            <a href="/projects/${project.slug}.html" class="view-project-btn">View Project</a>
           </div>
-        </div>`;
+        </a>`;
     });
     indexHtml = indexHtml.replace(/{{projects}}/g, projectsHtml);
   } else {
@@ -291,18 +339,17 @@ function generateIndexPage(projects, experiences, settings, about) {
     let experienceHtml = '';
     experiences.forEach(exp => {
       experienceHtml += `
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h3 class="timeline-title">${exp.position}</h3>
-            <h4 class="timeline-organization">${exp.title}</h4>
-            <div class="timeline-period">
-              <span class="timeline-date">${exp.start_date ? new Date(exp.start_date).toLocaleDateString() : ''} - ${exp.end_date ? new Date(exp.end_date).toLocaleDateString() : 'Present'}</span>
-              <span class="timeline-location">${exp.location}</span>
+        <a href="/experience/${exp.slug}.html" class="timeline-item-link">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">${exp.start_date || ''} — ${exp.end_date || 'Present'}</div>
+              <h3 class="timeline-title">${exp.position || ''}</h3>
+              <p class="timeline-company">${exp.organization || ''} • ${exp.location || ''}</p>
+              <p class="timeline-description">${exp.short_description || ''}</p>
             </div>
-            <p class="timeline-description">${exp.short_description}</p>
-            <a href="/experience/${exp.slug}.html" class="view-experience-btn">View Details</a>
           </div>
-        </div>`;
+        </a>`;
     });
     indexHtml = indexHtml.replace(/{{experience}}/g, experienceHtml);
   } else {
