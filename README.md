@@ -5,7 +5,7 @@ A modern, responsive personal website with integrated Content Management System 
 ## 🌟 Features
 
 ### 🎨 Design & User Experience
-- **Modern Design**: Clean, professional layout with Saleh Hamadeh + Sahil Dua hybrid styling
+- **Modern Design**: Clean, professional layout 
 - **Responsive**: Fully responsive design that works on all devices
 - **Interactive Terminal**: Dynamic terminal animation showcasing achievements
 - **Smooth Navigation**: Smooth scrolling and active section highlighting
