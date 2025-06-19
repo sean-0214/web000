@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sean Chiang - Quantitative Finance Student</title>
-    <meta name="description" content="Sean Chiang - Quantitative Finance Student at City University of Hong Kong. Passionate about applying machine learning and data science to discover investment opportunities.">
+    <title>{{site_title}}</title>
+    <meta name="description" content="{{description}}">
     <meta name="keywords" content="Sean Chiang, Quantitative Finance, Machine Learning, Data Science, Investment, Hong Kong">
-    <meta name="author" content="Sean Chiang">
+    <meta name="author" content="{{author}}">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://seanchiang.com/">
-    <meta property="og:title" content="Sean Chiang - Quantitative Finance Student">
-    <meta property="og:description" content="Passionate about applying machine learning and data science to discover investment opportunities and develop risk management strategies.">
-    <meta property="og:image" content="assets/images/sean_chiang_profile.jpg">
+    <meta property="og:title" content="{{site_title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:image" content="{{profile_image}}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://seanchiang.com/">
-    <meta property="twitter:title" content="Sean Chiang - Quantitative Finance Student">
-    <meta property="twitter:description" content="Passionate about applying machine learning and data science to discover investment opportunities and develop risk management strategies.">
-    <meta property="twitter:image" content="assets/images/sean_chiang_profile.jpg">
+    <meta property="twitter:title" content="{{site_title}}">
+    <meta property="twitter:description" content="{{description}}">
+    <meta property="twitter:image" content="{{profile_image}}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
@@ -54,17 +54,16 @@
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Sean Chiang</h1>
-                <p class="hero-subtitle">Quantitative Finance Student</p>
-                <p class="hero-description">
-                    Passionate about applying machine learning and data science to discover investment opportunities 
-                    and develop risk management strategies. Currently studying Computational Finance at City University of Hong Kong.
-                </p>
+                <h1>{{site_title}}</h1>
+                <p class="hero-subtitle">{{description}}</p>
+                <div class="hero-description">
+                    {{about_intro}}
+                </div>
                 <div class="social-links">
-                    <a href="mailto:sean021453@gmail.com">📧 Email</a>
-                    <a href="#" target="_blank">💼 LinkedIn</a>
-                    <a href="#" target="_blank">💻 GitHub</a>
-                    <a href="assets/documents/sean_chiang_resume.pdf" target="_blank">📄 Resume</a>
+                    <a href="mailto:{{email}}" class="social-link">Email</a>
+                    <a href="{{linkedin}}" target="_blank" class="social-link">LinkedIn</a>
+                    <a href="{{github}}" target="_blank" class="social-link">GitHub</a>
+                    <a href="{{resume}}" target="_blank" class="social-link">Resume</a>
                 </div>
             </div>
             
@@ -73,321 +72,104 @@
                     <div class="terminal-button close"></div>
                     <div class="terminal-button minimize"></div>
                     <div class="terminal-button maximize"></div>
-                    <div class="terminal-title">sean@quantfinance</div>
+                    <span class="terminal-title">sean@portfolio ~ %</span>
                 </div>
                 <div class="terminal-content">
-                    <div class="terminal-line">
-                        <span class="prompt">sean@quantfinance:~$</span> <span class="command">whoami</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output">> Quantitative Finance Student</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="prompt">sean@quantfinance:~$</span> <span class="command">cat achievements.txt</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output">> <span class="highlight">Global 1st Runner-up</span> - Point 72 x Fidelity Competition</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output">> <span class="highlight">Top 10.08%</span> - International Quant Championship</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="output">> <span class="highlight">Ex-SFC Type 1</span> Licensed Professional</span>
-                    </div>
-                    <div class="terminal-line">
-                        <span class="prompt">sean@quantfinance:~$</span> <span class="command typing-cursor">python trade_alpha.py</span>
-                    </div>
+                    {{terminal_commands}}
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section fade-in">
-        <h2>Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card" data-project-id="quant-championship">
-                <h3 class="project-title">International Quant Championship 2024</h3>
-                <p class="project-subtitle">WorldQuant • Global Top 10.08%</p>
-                <p class="project-description">
-                    Led team in developing 3 alpha strategies enhancing trading performance. Advanced to global semi-final 
-                    among 4,304 teams worldwide using fundamentals, volatility, and trading volume data.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Alpha Strategies</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">Quantitative Research</span>
-                </div>
-            </div>
-
-            <div class="project-card" data-project-id="point72-competition">
-                <h3 class="project-title">Point 72 x Fidelity x AIBC Asset Management Competition</h3>
-                <p class="project-subtitle">Point 72 Asset Management • Global 1st Runner-up</p>
-                <p class="project-description">
-                    Led data collection from Bloomberg and quantitative modeling. Incorporated sentiment analysis 
-                    and XGBoost into forecasts, achieving 1st runner-up among 2000+ global applicants.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">XGBoost</span>
-                    <span class="tag">Sentiment Analysis</span>
-                    <span class="tag">Bloomberg</span>
-                </div>
-            </div>
-
-            <div class="project-card" data-project-id="green-finance">
-                <h3 class="project-title">Green Finance Innovation</h3>
-                <p class="project-subtitle">Bank of America • 2nd Runner-up</p>
-                <p class="project-description">
-                    Proposed green digitalized securities brokerage with carbon credit trading and green investment 
-                    mechanisms in Greater Bay Area. Comprehensive research on China's green securities landscape.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">ESG</span>
-                    <span class="tag">Carbon Trading</span>
-                    <span class="tag">Fintech</span>
-                </div>
-            </div>
-
-            <div class="project-card" data-project-id="wandarwise">
-                <h3 class="project-title">Wandarwise.ai Startup</h3>
-                <p class="project-subtitle">Fintech • Champion Hong Kong Techathon+</p>
-                <p class="project-description">
-                    CFO of Hike Tech stealth startup. Academic and business lead supporting application development 
-                    and expansion. Participated in HKSTP Ideation business incubators.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Startup</span>
-                    <span class="tag">AI</span>
-                    <span class="tag">Business Development</span>
-                </div>
-            </div>
-
-            <div class="project-card" data-project-id="neural-network">
-                <h3 class="project-title">NVIDIA Neural Network Project</h3>
-                <p class="project-subtitle">Research Assistant • CityU Statistics</p>
-                <p class="project-description">
-                    Assisting quantitative research on NVIDIA-initiated neural network project. Focus on code 
-                    implementation and mathematical modeling for financial applications.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Neural Networks</span>
-                    <span class="tag">NVIDIA</span>
-                    <span class="tag">Mathematical Modeling</span>
-                </div>
-            </div>
-
-            <div class="project-card" data-project-id="asia-ysa">
-                <h3 class="project-title">Asia YSA Conference 2024</h3>
-                <p class="project-subtitle">Financial Manager • 180+ Participants</p>
-                <p class="project-description">
-                    Led Finance Committee for 4-day conference with participants from 24 countries across 10 Asian regions. 
-                    Managed budget within 80% of available funds while ensuring operational excellence.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Financial Management</span>
-                    <span class="tag">International</span>
-                    <span class="tag">Leadership</span>
-                </div>
-            </div>
-
-            <!-- Additional Project Placeholders -->
-            <div class="project-card" data-project-id="blockchain-trading">
-                <h3 class="project-title">Blockchain Trading Platform</h3>
-                <p class="project-subtitle">Personal Project • Cryptocurrency Trading</p>
-                <p class="project-description">
-                    Developed a decentralized trading platform for cryptocurrency assets using smart contracts. 
-                    Implemented automated market making and liquidity provision mechanisms.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Blockchain</span>
-                    <span class="tag">Smart Contracts</span>
-                    <span class="tag">DeFi</span>
-                </div>
-            </div>
-
-            <div class="project-card" data-project-id="risk-management">
-                <h3 class="project-title">Portfolio Risk Management System</h3>
-                <p class="project-subtitle">Academic Project • Risk Analytics</p>
-                <p class="project-description">
-                    Built comprehensive risk management system using VaR, CVaR, and stress testing methodologies. 
-                    Integrated real-time market data for dynamic risk assessment.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Risk Management</span>
-                    <span class="tag">VaR</span>
-                    <span class="tag">Analytics</span>
-                </div>
-            </div>
-
-            <div class="project-card" data-project-id="ml-trading">
-                <h3 class="project-title">Machine Learning Trading Bot</h3>
-                <p class="project-subtitle">Personal Project • Algorithmic Trading</p>
-                <p class="project-description">
-                    Developed automated trading system using reinforcement learning and deep neural networks. 
-                    Achieved consistent alpha generation through advanced feature engineering.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">Algorithmic Trading</span>
-                    <span class="tag">Deep Learning</span>
-                </div>
-            </div>
-
-            <div class="project-card" data-project-id="esg-analytics">
-                <h3 class="project-title">ESG Analytics Dashboard</h3>
-                <p class="project-subtitle">Research Project • Sustainable Finance</p>
-                <p class="project-description">
-                    Created comprehensive ESG scoring and analytics platform for institutional investors. 
-                    Integrated alternative data sources and NLP for ESG sentiment analysis.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">ESG</span>
-                    <span class="tag">Sustainable Finance</span>
-                    <span class="tag">NLP</span>
-                </div>
-            </div>
-
-            <div class="project-card" data-project-id="derivatives-pricing">
-                <h3 class="project-title">Derivatives Pricing Engine</h3>
-                <p class="project-subtitle">Academic Project • Financial Engineering</p>
-                <p class="project-description">
-                    Implemented Monte Carlo and finite difference methods for exotic derivatives pricing. 
-                    Built real-time pricing engine with Greeks calculation and risk metrics.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Derivatives</span>
-                    <span class="tag">Monte Carlo</span>
-                    <span class="tag">Financial Engineering</span>
-                </div>
-            </div>
-
-            <div class="project-card" data-project-id="credit-scoring">
-                <h3 class="project-title">AI Credit Scoring Model</h3>
-                <p class="project-subtitle">Industry Project • Credit Risk</p>
-                <p class="project-description">
-                    Developed machine learning models for credit risk assessment using alternative data sources. 
-                    Improved prediction accuracy by 25% compared to traditional scoring methods.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Credit Risk</span>
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">Alternative Data</span>
-                </div>
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                {{projects}}
             </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="section fade-in">
-        <h2>Professional Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item" data-experience-id="research-assistant">
-                <div class="timeline-date">September 2024 - March 2025</div>
-                <h3 class="timeline-title">Research Assistant - Statistics</h3>
-                <p class="timeline-company">City University of Hong Kong</p>
-                <p class="timeline-description">
-                    Assisting in quantitative research on an NVIDIA-initiated Neural Network project under Dr. Ivan Au Yeung 
-                    and Professor Chu Chi Wing. Focus on code implementation and mathematical modeling.
-                </p>
-            </div>
-
-            <div class="timeline-item" data-experience-id="oakcean-capital">
-                <div class="timeline-date">July - August 2024</div>
-                <h3 class="timeline-title">Financial Analyst Intern</h3>
-                <p class="timeline-company">Oakcean Capital Limited</p>
-                <p class="timeline-description">
-                    Conducted comprehensive financial analysis and market research for investment opportunities. 
-                    Developed financial models and supported portfolio management decisions.
-                </p>
-            </div>
-
-            <div class="timeline-item" data-experience-id="haitong-international">
-                <div class="timeline-date">June - July 2024</div>
-                <h3 class="timeline-title">Summer Analyst</h3>
-                <p class="timeline-company">Haitong International</p>
-                <p class="timeline-description">
-                    Supported equity research and analysis for Asian markets. Participated in client presentations 
-                    and contributed to research reports on technology and financial sectors.
-                </p>
-            </div>
-
-            <div class="timeline-item" data-experience-id="climbing-society">
-                <div class="timeline-date">September 2023 - August 2024</div>
-                <h3 class="timeline-title">Secretary of Welfare</h3>
-                <p class="timeline-company">CityUHK Sports Climbing Society</p>
-                <p class="timeline-description">
-                    Led welfare initiatives and member engagement programs for 200+ active members. 
-                    Organized training sessions, competitions, and social events to build community.
-                </p>
+    <section id="experience" class="section">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                {{experience}}
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section fade-in">
-        <h2>Skills & Technologies</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Programming Languages</h3>
-                <ul class="skill-list">
-                    <li>Python</li>
-                    <li>R</li>
-                    <li>SQL</li>
-                    <li>MATLAB</li>
-                    <li>JavaScript</li>
-                </ul>
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                {{skills}}
             </div>
-
-            <div class="skill-category">
-                <h3>Machine Learning & AI</h3>
-                <ul class="skill-list">
-                    <li>XGBoost</li>
-                    <li>Neural Networks</li>
-                    <li>NLP</li>
-                    <li>Deep Learning</li>
-                    <li>Reinforcement Learning</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>Financial Tools</h3>
-                <ul class="skill-list">
-                    <li>Bloomberg Terminal</li>
-                    <li>QuantLib</li>
-                    <li>Risk Management</li>
-                    <li>Portfolio Optimization</li>
-                    <li>Derivatives Pricing</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>Data & Analytics</h3>
-                <ul class="skill-list">
-                    <li>Pandas</li>
-                    <li>NumPy</li>
-                    <li>Scikit-learn</li>
-                    <li>TensorFlow</li>
-                    <li>Data Visualization</li>
-                </ul>
+        </div>
+    </section>
+    
+    <!-- Interests Section -->
+    <section id="interests" class="section light-section">
+        <div class="container">
+            <h2>Interests & Activities</h2>
+            <div class="interests-grid">
+                {{interests}}
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-        <h2>Get In Touch</h2>
-        <p class="contact-description">
-            I'm always interested in discussing quantitative finance, machine learning applications in trading, 
-            or potential collaboration opportunities.
-        </p>
-        <div class="contact-buttons">
-            <a href="mailto:sean021453@gmail.com" class="contact-btn">Send Email</a>
-            <a href="#" class="contact-btn secondary" target="_blank">LinkedIn Profile</a>
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="contact-description">Feel free to reach out for collaborations, opportunities, or just to connect!</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Email</h3>
+                    <p><a href="mailto:{{email}}">{{email}}</a></p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>LinkedIn</h3>
+                    <p><a href="{{linkedin}}" target="_blank">Connect on LinkedIn</a></p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>GitHub</h3>
+                    <p><a href="{{github}}" target="_blank">View Projects</a></p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="copyright">&copy; 2025 {{author}}. All rights reserved.</p>
+        </div>
+    </footer>
+
     <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script>
+        // Simple fade-in animation for sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
-
