@@ -4,6 +4,7 @@
   "description": "Sean Chiang's personal website with Decap CMS integration",
   "main": "build.js",
   "scripts": {
+    "prebuild": "node verify-cms-data.js",
     "build": "node build.js",
     "dev": "npm run build && http-server -p 8080"
   },
@@ -15,9 +16,9 @@
   "author": "Sean Chiang",
   "license": "MIT",
   "dependencies": {
-    "glob": "^8.0.3",
+    "glob": "^8.1.0",
     "http-server": "^14.1.1",
     "js-yaml": "^4.1.0",
-    "marked": "^4.2.4"
+    "marked": "^4.3.0"
   }
 }

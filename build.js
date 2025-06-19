@@ -14,7 +14,14 @@ const glob = require('glob');
 // Paths
 const contentProjectsDir = path.join(__dirname, 'content/projects');
 const contentExperienceDir = path.join(__dirname, 'content/experience');
-const dataDir = path.join(__dirname, '_data');
+
+// Check both content/ and _data/ directories for configuration files
+const dataDir = fs.existsSync(path.join(__dirname, 'content/settings.yml')) 
+  ? path.join(__dirname, 'content') 
+  : path.join(__dirname, '_data');
+const contentDir = path.join(__dirname, 'content');
+
+console.log(`Using data directory: ${dataDir}`);
 const projectsOutputDir = path.join(__dirname, 'projects');
 const experienceOutputDir = path.join(__dirname, 'experience');
 
@@ -55,7 +62,20 @@ function processMarkdown(content) {
 // Process all project files
 function processProjects() {
   console.log('Processing projects...');
-  const projectFiles = glob.sync(path.join(contentProjectsDir, '*.md'));
+  console.log(`Looking for projects in: ${contentProjectsDir}`);
+  
+  // Use direct file system access instead of glob
+  let projectFiles = [];
+  try {
+    const files = fs.readdirSync(contentProjectsDir);
+    projectFiles = files
+      .filter(file => file.endsWith('.md'))
+      .map(file => path.join(contentProjectsDir, file));
+  } catch (err) {
+    console.error('Error reading projects directory:', err.message);
+  }
+  
+  console.log(`Found ${projectFiles.length} project files: ${projectFiles.map(f => path.basename(f)).join(', ')}`);
   const projects = [];
   
   projectFiles.forEach(filePath => {
@@ -109,13 +129,28 @@ function processProjects() {
   // Sort projects by order field
   projects.sort((a, b) => (a.order || 999) - (b.order || 999));
   
+  console.log('Projects:', projects); // Added debug logging
+  
   return projects;
 }
 
-// Process all experience files
+// Process experience files
 function processExperience() {
   console.log('Processing experience...');
-  const experienceFiles = glob.sync(path.join(contentExperienceDir, '*.md'));
+  console.log(`Looking for experience files in: ${contentExperienceDir}`);
+  
+  // Use direct file system access instead of glob
+  let experienceFiles = [];
+  try {
+    const files = fs.readdirSync(contentExperienceDir);
+    experienceFiles = files
+      .filter(file => file.endsWith('.md'))
+      .map(file => path.join(contentExperienceDir, file));
+  } catch (err) {
+    console.error('Error reading experience directory:', err.message);
+  }
+  
+  console.log(`Found ${experienceFiles.length} experience files: ${experienceFiles.map(f => path.basename(f)).join(', ')}`);
   const experiences = [];
   
   experienceFiles.forEach(filePath => {
@@ -174,12 +209,23 @@ function processExperience() {
 // Process site settings
 function processSettings() {
   console.log('Processing site settings...');
-  const settingsPath = path.join(dataDir, 'settings.yml');
+  // Try both content/ and _data/ directories
+  let settingsPath = path.join(dataDir, 'settings.yml');
+  
+  // Fallback to alternate location if not found
   if (!fs.existsSync(settingsPath)) {
-    console.warn('Settings file not found');
+    const altDir = dataDir.includes('content') 
+      ? path.join(__dirname, '_data') 
+      : path.join(__dirname, 'content');
+    settingsPath = path.join(altDir, 'settings.yml');
+  }
+  
+  if (!fs.existsSync(settingsPath)) {
+    console.warn('Settings file not found in either content/ or _data/ directories');
     return {};
   }
   
+  console.log(`Loading settings from: ${settingsPath}`);
   const settingsContent = fs.readFileSync(settingsPath, 'utf8');
   return yaml.load(settingsContent);
 }
@@ -187,12 +233,23 @@ function processSettings() {
 // Process about page data
 function processAbout() {
   console.log('Processing about data...');
-  const aboutPath = path.join(dataDir, 'about.yml');
+  // Try both content/ and _data/ directories
+  let aboutPath = path.join(dataDir, 'about.yml');
+  
+  // Fallback to alternate location if not found
   if (!fs.existsSync(aboutPath)) {
-    console.warn('About file not found');
+    const altDir = dataDir.includes('content') 
+      ? path.join(__dirname, '_data') 
+      : path.join(__dirname, 'content');
+    aboutPath = path.join(altDir, 'about.yml');
+  }
+  
+  if (!fs.existsSync(aboutPath)) {
+    console.warn('About file not found in either content/ or _data/ directories');
     return {};
   }
   
+  console.log(`Loading about data from: ${aboutPath}`);
   const aboutContent = fs.readFileSync(aboutPath, 'utf8');
   return yaml.load(aboutContent);
 }
@@ -221,27 +278,63 @@ function generateIndexPage(projects, experiences, settings, about) {
     // Terminal commands
     if (about.terminal_commands && about.terminal_commands.length) {
       let commandsHtml = '';
-      about.terminal_commands.forEach(cmd => {
-        commandsHtml += `<div class="terminal-line"><span class="prompt">$</span> ${cmd.command}</div>`;
-        commandsHtml += `<div class="terminal-output">${cmd.output}</div>`;
+      about.terminal_commands.forEach((cmd, index) => {
+        // Add command with prompt
+        commandsHtml += `<div class="terminal-line"><span class="terminal-prompt">$</span> <span class="terminal-command">${cmd.command}</span></div>`;
+        
+        // Add output with color variations
+        let output = cmd.output;
+        
+        // Add some yellow highlights for important parts in the output
+        if (index === 0) { // For whoami command
+          output = `<span class="terminal-highlight">Quantitative Finance</span> Student`;
+        } else if (index <= 3) { // For achievement commands
+          // Extract the achievement parts to highlight
+          if (output.includes('Point 72')) {
+            output = output.replace('Point 72', `<span class="terminal-highlight">Point 72</span>`);
+          } else if (output.includes('Top 10.08%')) {
+            output = output.replace('Top 10.08%', `<span class="terminal-highlight">Top 10.08%</span>`);
+          } else if (output.includes('Ex-SFC')) {
+            output = output.replace('Ex-SFC', `<span class="terminal-highlight">Ex-SFC</span>`);
+          }
+        } else if (index === 4) { // For the Python command
+          output = `Running <span class="terminal-highlight">alpha generation</span> strategies...`;
+        }
+        
+        commandsHtml += `<div class="terminal-output">${output}</div>`;
       });
       indexHtml = indexHtml.replace(/{{terminal_commands}}/g, commandsHtml);
     } else {
       indexHtml = indexHtml.replace(/{{terminal_commands}}/g, '');
     }
     
+    // About intro
+    if (about.intro) {
+      indexHtml = indexHtml.replace(/{{about_intro}}/g, about.intro);
+    } else {
+      indexHtml = indexHtml.replace(/{{about_intro}}/g, '');
+    }
+    
     // Skills
     if (about.skills && about.skills.length) {
       let skillsHtml = '';
-      about.skills.forEach(skill => {
-        skillsHtml += `<div class="skill-category"><h3>${skill.category}</h3><ul>`;
-        if (skill.items && skill.items.length) {
-          skill.items.forEach(item => {
-            skillsHtml += `<li>${item}</li>`;
+      about.skills.forEach(skillCategory => {
+        skillsHtml += `
+          <div class="skill-category">
+            <h3>${skillCategory.category}</h3>
+            <ul class="skill-list">`;
+        
+        if (skillCategory.items && skillCategory.items.length) {
+          skillCategory.items.forEach(skill => {
+            skillsHtml += `<li>${skill}</li>`;
           });
         }
-        skillsHtml += '</ul></div>';
+        
+        skillsHtml += `
+            </ul>
+          </div>`;
       });
+      
       indexHtml = indexHtml.replace(/{{skills}}/g, skillsHtml);
     } else {
       indexHtml = indexHtml.replace(/{{skills}}/g, '');
@@ -249,11 +342,23 @@ function generateIndexPage(projects, experiences, settings, about) {
     
     // Interests
     if (about.interests && about.interests.length) {
-      let interestsHtml = '<ul class="interests-list">';
+      let interestsHtml = '';
+      
       about.interests.forEach(interest => {
-        interestsHtml += `<li>${interest}</li>`;
+        if (typeof interest === 'object') {
+          interestsHtml += `
+            <div class="interest-item">
+              <div class="interest-name">${interest.name}</div>
+              <div class="interest-description">${interest.description}</div>
+            </div>`;
+        } else {
+          interestsHtml += `
+            <div class="interest-item">
+              <div class="interest-name">${interest}</div>
+            </div>`;
+        }
       });
-      interestsHtml += '</ul>';
+      
       indexHtml = indexHtml.replace(/{{interests}}/g, interestsHtml);
     } else {
       indexHtml = indexHtml.replace(/{{interests}}/g, '');
@@ -265,21 +370,20 @@ function generateIndexPage(projects, experiences, settings, about) {
     let projectsHtml = '';
     projects.forEach(project => {
       projectsHtml += `
-        <div class="project-card${project.featured ? ' featured' : ''}">
-          <div class="project-image">
-            <img src="${project.hero_image || '/assets/images/default-project.jpg'}" alt="${project.title}">
-          </div>
-          <div class="project-content">
+        <a href="/projects/${project.slug}.html" class="project-card-link">
+          <div class="project-card${project.featured ? ' featured' : ''}" data-project-id="${project.slug}">
             <h3 class="project-title">${project.title}</h3>
-            <h4 class="project-subtitle">${project.subtitle}</h4>
-            <p class="project-description">${project.short_description}</p>
-            <div class="project-meta">
-              <span class="project-organization">${project.organization}</span>
-              <span class="project-date">${project.date ? new Date(project.date).toLocaleDateString() : ''}</span>
+            <p class="project-subtitle">${project.organization || ''} ${project.achievement ? '• ' + project.achievement : ''}</p>
+            <p class="project-description">
+              ${project.short_description || ''}
+            </p>
+            <div class="project-footer">
+              <div class="project-tags">
+                ${project.tags && project.tags.length ? project.tags.slice(0, 3).map(tag => `<span class="tag">${tag}</span>`).join('') : ''}
+              </div>
             </div>
-            <a href="/projects/${project.slug}.html" class="view-project-btn">View Project</a>
           </div>
-        </div>`;
+        </a>`;
     });
     indexHtml = indexHtml.replace(/{{projects}}/g, projectsHtml);
   } else {
@@ -291,18 +395,17 @@ function generateIndexPage(projects, experiences, settings, about) {
     let experienceHtml = '';
     experiences.forEach(exp => {
       experienceHtml += `
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <h3 class="timeline-title">${exp.position}</h3>
-            <h4 class="timeline-organization">${exp.title}</h4>
-            <div class="timeline-period">
-              <span class="timeline-date">${exp.start_date ? new Date(exp.start_date).toLocaleDateString() : ''} - ${exp.end_date ? new Date(exp.end_date).toLocaleDateString() : 'Present'}</span>
-              <span class="timeline-location">${exp.location}</span>
+        <a href="/experience/${exp.slug}.html" class="timeline-item-link">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">${exp.start_date || ''} — ${exp.end_date || 'Present'}</div>
+              <h3 class="timeline-title">${exp.position || ''}</h3>
+              <p class="timeline-company">${exp.organization || ''} • ${exp.location || ''}</p>
+              <p class="timeline-description">${exp.short_description || ''}</p>
             </div>
-            <p class="timeline-description">${exp.short_description}</p>
-            <a href="/experience/${exp.slug}.html" class="view-experience-btn">View Details</a>
           </div>
-        </div>`;
+        </a>`;
     });
     indexHtml = indexHtml.replace(/{{experience}}/g, experienceHtml);
   } else {
@@ -314,8 +417,20 @@ function generateIndexPage(projects, experiences, settings, about) {
 
 // Main build process
 console.log('Starting build process...');
+console.log('Working directory: ' + __dirname);
 
 try {
+  // Make sure content directories exist
+  if (!fs.existsSync(contentProjectsDir)) {
+    console.log(`Creating projects directory at ${contentProjectsDir}`);
+    fs.mkdirSync(contentProjectsDir, { recursive: true });
+  }
+  
+  if (!fs.existsSync(contentExperienceDir)) {
+    console.log(`Creating experience directory at ${contentExperienceDir}`);
+    fs.mkdirSync(contentExperienceDir, { recursive: true });
+  }
+
   // Extract templates from existing HTML first
   console.log('Extracting templates from existing HTML...');
   
@@ -373,15 +488,47 @@ try {
   }
   
   // Process all content and data
-  const projects = processProjects();
-  const experiences = processExperience();
+  let projects = processProjects();
+  let experiences = processExperience();
   const settings = processSettings();
   const about = processAbout();
   
+  // Verify we have content
+  if (!projects || projects.length === 0) {
+    console.warn('No projects found, creating sample project');
+    projects = [{
+      title: 'Sample Project',
+      organization: 'Example Organization',
+      achievement: 'First Place',
+      short_description: 'This is a sample project to ensure the projects section displays properly.',
+      tags: ['Sample', 'Demo', 'Test'],
+      slug: 'sample-project',
+      featured: true
+    }];
+  }
+  
+  if (!experiences || experiences.length === 0) {
+    console.warn('No experiences found, creating sample experience');
+    experiences = [{
+      position: 'Sample Position',
+      organization: 'Example Company',
+      start_date: '2023-01-01',
+      end_date: '2024-01-01',
+      location: 'Hong Kong',
+      short_description: 'This is a sample experience to ensure the experience section displays properly.',
+      slug: 'sample-experience'
+    }];
+  }
+  
+  console.log(`Projects count: ${projects.length}`);
+  console.log(`Experiences count: ${experiences.length}`);
+  
   // Generate the main index page
+  console.log('Generating index page with projects and experiences data...');
   generateIndexPage(projects, experiences, settings, about);
   
   console.log('Build completed successfully!');
+  console.log('Output written to index.html');
 } catch (error) {
   console.error('Build failed:', error);
   process.exit(1);

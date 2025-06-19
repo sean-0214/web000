@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Finance Innovation - Sean Chiang</title>
-    <meta name="description" content="Sean Chiang's Green Finance Innovation project for Bank of America Business Administration Paper 2022, achieving 2nd Runner-up position.">
+    <meta name="description" content="{{short_description}}">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -16,7 +20,7 @@
             <nav>
                 <ul class="nav-menu">
                     <li><a href="../index.html#home">Home</a></li>
-                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#projects" class="active">Projects</a></li>
                     <li><a href="../index.html#experience">Experience</a></li>
                     <li><a href="../index.html#skills">Skills</a></li>
                     <li><a href="../index.html#contact">Contact</a></li>
@@ -28,262 +32,60 @@
     <!-- Project Detail Hero -->
     <section class="project-detail-hero">
         <div class="container">
-            <a href="../index.html#projects" class="back-button">← Back to Projects</a>
-            <h1>Green Finance Innovation</h1>
-            <p class="subtitle">Bank of America Business Administration Paper 2022</p>
-            <p class="achievement">🥉 2nd Runner-up - Sustainable Finance Innovation</p>
+            <a href="../index.html#projects" class="back-button"><span class="arrow">←</span> Back to Projects</a>
+            <h1 class="project-title">Green Finance Innovation</h1>
+            <div class="project-meta">
+                <p class="project-subtitle">Bank of America</p>
+                <p class="project-achievement">2nd Runner-up</p>
+            </div>
         </div>
     </section>
 
     <!-- Project Content -->
-    <div class="project-detail-content">
-        <div class="project-detail-section">
-            <h2>Project Overview</h2>
-            <p>
-                The Green Finance Innovation project was developed for the Bank of America Business Administration 
-                Paper 2022 competition, focusing on sustainable finance solutions for the Greater Bay Area. Our 
-                innovative proposal for a green digitalized securities brokerage earned the 2nd Runner-up position, 
-                recognizing our comprehensive approach to environmental, social, and governance (ESG) investing.
-            </p>
-            <p>
-                The project addressed the growing need for sustainable investment platforms that could facilitate 
-                carbon credit trading while promoting green investment mechanisms in one of Asia's most dynamic 
-                economic regions.
-            </p>
+    <div class="project-detail-content container">
+        {{#if hero_image}}
+        <div class="project-hero-image">
+            <img src="/assets/images/green-finance-hero.jpg" alt="Green Finance Innovation">
+        </div>
+        {{/if}}
+
+        <div class="project-detail-section content-section">
+            <p>The Green Finance Innovation project was developed for the Bank of America Business Administration Paper competition. The project focused on creating sustainable financing solutions that align with ESG principles while delivering competitive returns for investors.</p>
+<h2 id="key-achievements">Key Achievements</h2>
+<ul>
+<li>Developed a comprehensive green finance framework with practical implementation strategies</li>
+<li>Created financial models demonstrating ROI of sustainable investments</li>
+<li>Presented to a panel of industry experts and secured 2nd Runner-up position</li>
+</ul>
+<h2 id="technologies-used">Technologies Used</h2>
+<ul>
+<li>Financial modeling tools</li>
+<li>ESG metrics analysis software</li>
+<li>Sustainability impact assessment frameworks</li>
+</ul>
+
         </div>
 
-        <div class="media-placeholder" data-media-type="image">
-            <h3>🌱 Project Presentation & Awards</h3>
-            <p>Upload images from the presentation, award ceremony, and project materials here.</p>
+        {{#if technologies}}
+        <div class="project-detail-section tech-section">
+            <h2>Technologies Used</h2>
+            <div class="tech-tags">
+                
+            </div>
         </div>
+        {{/if}}
 
-        <div class="project-detail-section">
-            <h2>Innovation Concept</h2>
-            <p>
-                Our green digitalized securities brokerage concept represented a paradigm shift in how financial 
-                institutions can promote sustainable investing:
-            </p>
-            
-            <h3>Core Innovation Elements:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Integrated Carbon Credit Trading:</strong> Seamless platform for carbon offset transactions</li>
-                <li><strong>ESG-Focused Investment Tools:</strong> Advanced screening and analysis capabilities</li>
-                <li><strong>Green Bond Marketplace:</strong> Dedicated platform for sustainable debt instruments</li>
-                <li><strong>Impact Measurement Dashboard:</strong> Real-time tracking of environmental impact</li>
-                <li><strong>Regulatory Compliance Framework:</strong> Built-in compliance with green finance regulations</li>
-            </ul>
+        {{#if project_links}}
+        <div class="project-detail-section links-section">
+            <h2>Project Links</h2>
+            <div class="project-links">
+                
+            </div>
         </div>
-
-        <div class="project-detail-section">
-            <h2>Greater Bay Area Focus</h2>
-            <p>
-                The Greater Bay Area (GBA) was strategically chosen as our target market due to its unique 
-                characteristics and growth potential:
-            </p>
-            
-            <h3>Market Opportunity:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Rapid economic growth and urbanization</li>
-                <li>Strong government support for green finance initiatives</li>
-                <li>Large concentration of manufacturing and technology companies</li>
-                <li>Growing awareness of environmental sustainability</li>
-                <li>Significant capital flows and investment activity</li>
-            </ul>
-
-            <h3>Regional Advantages:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Hong Kong's established financial infrastructure</li>
-                <li>Shenzhen's technology innovation ecosystem</li>
-                <li>Guangzhou's manufacturing base</li>
-                <li>Cross-border financial connectivity</li>
-                <li>Regulatory harmonization opportunities</li>
-            </ul>
-        </div>
-
-        <div class="media-placeholder" data-media-type="video">
-            <h3>🎥 Project Presentation Video</h3>
-            <p>Upload the project presentation video explaining the green finance innovation concept here.</p>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Carbon Credit Trading Mechanism</h2>
-            <p>
-                A key innovation of our platform was the integrated carbon credit trading system:
-            </p>
-            
-            <h3>Trading Features:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Automated Matching:</strong> AI-powered matching of buyers and sellers</li>
-                <li><strong>Price Discovery:</strong> Real-time pricing based on market dynamics</li>
-                <li><strong>Verification System:</strong> Blockchain-based authenticity verification</li>
-                <li><strong>Portfolio Integration:</strong> Seamless integration with investment portfolios</li>
-                <li><strong>Compliance Tracking:</strong> Automated regulatory reporting</li>
-            </ul>
-
-            <h3>Market Impact:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Increased liquidity in carbon credit markets</li>
-                <li>Reduced transaction costs and complexity</li>
-                <li>Enhanced transparency and trust</li>
-                <li>Broader participation from retail investors</li>
-                <li>Accelerated adoption of carbon offsetting</li>
-            </ul>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Comprehensive Research Methodology</h2>
-            <p>
-                Our project was built on extensive research into China's green securities landscape:
-            </p>
-            
-            <h3>Research Components:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Market Analysis:</strong> Comprehensive study of existing green finance products</li>
-                <li><strong>Regulatory Review:</strong> Analysis of current and proposed green finance regulations</li>
-                <li><strong>Competitive Landscape:</strong> Evaluation of existing platforms and services</li>
-                <li><strong>Technology Assessment:</strong> Review of available fintech solutions</li>
-                <li><strong>Stakeholder Interviews:</strong> Insights from industry professionals and regulators</li>
-            </ul>
-        </div>
-
-        <div class="media-placeholder" data-media-type="image">
-            <h3>📊 Market Research & Analysis Charts</h3>
-            <p>Upload charts, graphs, and visualizations from the market research and analysis here.</p>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Technology Architecture</h2>
-            <p>
-                The proposed platform leveraged cutting-edge financial technology:
-            </p>
-            
-            <h3>Core Technologies:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Blockchain:</strong> For carbon credit verification and trading</li>
-                <li><strong>AI/ML:</strong> For ESG scoring and investment recommendations</li>
-                <li><strong>Cloud Computing:</strong> Scalable and secure infrastructure</li>
-                <li><strong>API Integration:</strong> Seamless connection with existing systems</li>
-                <li><strong>Mobile-First Design:</strong> Accessible across all devices</li>
-            </ul>
-
-            <h3>Security Features:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Multi-factor authentication</li>
-                <li>End-to-end encryption</li>
-                <li>Regulatory compliance monitoring</li>
-                <li>Fraud detection algorithms</li>
-                <li>Audit trail maintenance</li>
-            </ul>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Business Model & Revenue Streams</h2>
-            <p>
-                Our comprehensive business model identified multiple revenue opportunities:
-            </p>
-            
-            <h3>Primary Revenue Streams:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Trading Commissions:</strong> Fees on securities and carbon credit transactions</li>
-                <li><strong>Platform Subscriptions:</strong> Premium features for institutional clients</li>
-                <li><strong>Data Services:</strong> ESG analytics and market intelligence</li>
-                <li><strong>Advisory Services:</strong> Green finance consulting and strategy</li>
-                <li><strong>Technology Licensing:</strong> Platform technology to other financial institutions</li>
-            </ul>
-        </div>
-
-        <div class="media-placeholder" data-media-type="document">
-            <h3>📄 Business Plan & Financial Projections</h3>
-            <p>Upload the complete business plan, financial models, and projection documents here.</p>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Environmental Impact Assessment</h2>
-            <p>
-                A crucial component of our project was quantifying the potential environmental impact:
-            </p>
-            
-            <h3>Projected Benefits:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Increased capital flows to green projects</li>
-                <li>Enhanced carbon offset market efficiency</li>
-                <li>Accelerated adoption of sustainable investing</li>
-                <li>Improved corporate ESG performance</li>
-                <li>Contribution to regional carbon neutrality goals</li>
-            </ul>
-
-            <h3>Measurement Metrics:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Total green investments facilitated</li>
-                <li>Carbon credits traded and retired</li>
-                <li>Number of sustainable projects funded</li>
-                <li>ESG score improvements of listed companies</li>
-                <li>Platform user engagement with green products</li>
-            </ul>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Competition Results & Recognition</h2>
-            <p>
-                Our innovative approach earned significant recognition:
-            </p>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>🥉 2nd Runner-up in Bank of America Business Administration Paper 2022</li>
-                <li>Recognition for innovation in sustainable finance</li>
-                <li>Positive feedback from industry judges and experts</li>
-                <li>Invitation to present at green finance conferences</li>
-                <li>Media coverage in financial and sustainability publications</li>
-                <li>Networking opportunities with green finance professionals</li>
-            </ul>
-        </div>
-
-        <div class="media-placeholder" data-media-type="video">
-            <h3>🏆 Award Ceremony & Interviews</h3>
-            <p>Upload videos from the award ceremony, judge interviews, and media coverage here.</p>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Future Implementation Roadmap</h2>
-            <p>
-                The project included a detailed implementation strategy:
-            </p>
-            
-            <h3>Phase 1: Foundation (Months 1-6)</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Regulatory approval and licensing</li>
-                <li>Core platform development</li>
-                <li>Partnership establishment</li>
-                <li>Initial team recruitment</li>
-            </ul>
-
-            <h3>Phase 2: Launch (Months 7-12)</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Beta testing with select clients</li>
-                <li>Carbon credit marketplace launch</li>
-                <li>ESG analytics platform deployment</li>
-                <li>Marketing and user acquisition</li>
-            </ul>
-
-            <h3>Phase 3: Expansion (Months 13-24)</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Full platform rollout</li>
-                <li>Advanced features development</li>
-                <li>Regional market expansion</li>
-                <li>Strategic partnerships</li>
-            </ul>
-        </div>
-
-        <!-- Project Links -->
-        <div class="project-links">
-            <a href="#" class="project-link primary">View Full Research Paper</a>
-            <a href="#" class="project-link">Bank of America Competition</a>
-            <a href="#" class="project-link">Green Finance Resources</a>
-            <a href="../assets/documents/green_finance_certificate.pdf" class="project-link">Download Certificate</a>
-        </div>
+        {{/if}}
     </div>
 
     <!-- JavaScript -->
     <script src="../js/main.js"></script>
 </body>
 </html>
-

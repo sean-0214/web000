@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Assistant Position - Sean Chiang</title>
-    <meta name="description" content="Sean Chiang's experience as Research Assistant at City University of Hong Kong Statistics Department, working on NVIDIA-initiated Neural Network project.">
+    <title>Research Assistant - Statistics Department - Sean Chiang</title>
+    <meta name="description" content="Sean Chiang's experience as Research Assistant at City University of Hong Kong.">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -17,7 +21,7 @@
                 <ul class="nav-menu">
                     <li><a href="../index.html#home">Home</a></li>
                     <li><a href="../index.html#projects">Projects</a></li>
-                    <li><a href="../index.html#experience">Experience</a></li>
+                    <li><a href="../index.html#experience" class="active">Experience</a></li>
                     <li><a href="../index.html#skills">Skills</a></li>
                     <li><a href="../index.html#contact">Contact</a></li>
                 </ul>
@@ -26,292 +30,352 @@
     </header>
 
     <!-- Experience Detail Hero -->
-    <section class="project-detail-hero">
+    <section class="experience-detail-hero">
         <div class="container">
-            <a href="../index.html#experience" class="back-button">← Back to Experience</a>
-            <h1>Research Assistant - Statistics</h1>
-            <p class="subtitle">City University of Hong Kong • September 2024 - March 2025</p>
-            <p class="achievement">🔬 NVIDIA-Initiated Neural Network Research</p>
+            <a href="../index.html#experience" class="back-button"><span class="arrow">←</span> Back to Experience</a>
+            <h1 class="experience-title">Research Assistant</h1>
+            <div class="experience-meta">
+                <p class="experience-subtitle">City University of Hong Kong <span class="dot">•</span> <span class="period">9/1/2024 — 3/31/2025</span></p>
+                <p class="experience-location">Hong Kong</p>
+            </div>
         </div>
     </section>
 
     <!-- Experience Content -->
-    <div class="project-detail-content">
-        <div class="project-detail-section">
-            <h2>Position Overview</h2>
-            <p>
-                As a Research Assistant in the Statistics Department at City University of Hong Kong, I am actively 
-                contributing to a cutting-edge NVIDIA-initiated Neural Network project under the supervision of 
-                Dr. Ivan Au Yeung and Professor Chu Chi Wing. This position represents a unique opportunity to work 
-                at the intersection of advanced statistics, machine learning, and financial applications.
-            </p>
-            <p>
-                The role involves both theoretical research and practical implementation, focusing on developing 
-                innovative neural network architectures specifically designed for quantitative finance applications.
-            </p>
+    <div class="experience-detail-content container">
+        {{#if hero_image}}
+        <div class="experience-hero-image">
+            <img src="" alt="Research Assistant - Statistics Department">
+        </div>
+        {{/if}}
+
+        <div class="experience-detail-section content-section">
+            <h2 id="research-position-overview">Research Position Overview</h2>
+<p>As a Research Assistant in the Statistics Department at City University of Hong Kong, I have the privilege of working on a cutting-edge neural network project initiated by NVIDIA. This position, under the supervision of Dr. Ivan Au Yeung and Professor Chu Chi Wing, focuses on the intersection of advanced machine learning techniques and financial applications.</p>
+<p>The research project represents a significant collaboration between academia and industry, bringing together theoretical statistical foundations with practical implementation challenges in the rapidly evolving field of artificial intelligence and quantitative finance.</p>
+<h2 id="project-background--objectives">Project Background &amp; Objectives</h2>
+<h3 id="nvidia-collaboration">NVIDIA Collaboration</h3>
+<p>The project stems from NVIDIA&#39;s initiative to explore novel applications of neural networks in financial modeling and risk assessment. This collaboration provides access to:</p>
+<p><strong>Advanced Computing Resources</strong>:</p>
+<ul>
+<li>High-performance GPU clusters for model training</li>
+<li>Specialized software frameworks optimized for neural network development</li>
+<li>Cloud computing infrastructure for large-scale data processing</li>
+<li>Technical support from NVIDIA&#39;s research engineering team</li>
+</ul>
+<p><strong>Industry Expertise</strong>:</p>
+<ul>
+<li>Direct mentorship from NVIDIA research scientists</li>
+<li>Access to proprietary research methodologies and best practices</li>
+<li>Exposure to cutting-edge developments in AI and machine learning</li>
+<li>Networking opportunities within the technology industry</li>
+</ul>
+<h3 id="research-objectives">Research Objectives</h3>
+<p><strong>Primary Goals</strong>: The research project aims to achieve several key objectives:</p>
+<ul>
+<li><strong>Algorithm Development</strong>: Create novel neural network architectures for financial prediction</li>
+<li><strong>Performance Optimization</strong>: Enhance computational efficiency and accuracy of existing models</li>
+<li><strong>Practical Application</strong>: Develop real-world applications for investment and risk management</li>
+<li><strong>Academic Contribution</strong>: Produce publishable research advancing the field</li>
+</ul>
+<p><strong>Secondary Objectives</strong>: Supporting goals that enhance the overall research impact:</p>
+<ul>
+<li><strong>Knowledge Transfer</strong>: Bridge academic research with industry applications</li>
+<li><strong>Student Development</strong>: Provide hands-on experience with advanced technologies</li>
+<li><strong>Institutional Collaboration</strong>: Strengthen university-industry partnerships</li>
+<li><strong>Innovation Pipeline</strong>: Create foundation for future research initiatives</li>
+</ul>
+<h2 id="technical-responsibilities">Technical Responsibilities</h2>
+<h3 id="neural-network-implementation">Neural Network Implementation</h3>
+<p><strong>Architecture Development</strong>: My primary responsibility involves implementing and testing various neural network architectures:</p>
+<p><strong>Deep Learning Models</strong>:</p>
+<ul>
+<li><strong>Feedforward Networks</strong>: Multi-layer perceptrons for basic prediction tasks</li>
+<li><strong>Recurrent Neural Networks</strong>: LSTM and GRU models for time series analysis</li>
+<li><strong>Convolutional Networks</strong>: CNN architectures for pattern recognition in financial data</li>
+<li><strong>Transformer Models</strong>: Attention-based models for sequence-to-sequence learning</li>
+<li><strong>Hybrid Architectures</strong>: Custom combinations optimized for specific financial applications</li>
+</ul>
+<p><strong>Implementation Framework</strong>:</p>
+<ul>
+<li><strong>PyTorch</strong>: Primary framework for model development and training</li>
+<li><strong>TensorFlow</strong>: Secondary framework for specific model architectures</li>
+<li><strong>CUDA Programming</strong>: GPU optimization for computational efficiency</li>
+<li><strong>Model Optimization</strong>: Hyperparameter tuning and architecture search</li>
+<li><strong>Performance Monitoring</strong>: Real-time tracking of training metrics and convergence</li>
+</ul>
+<h3 id="mathematical-modeling">Mathematical Modeling</h3>
+<p><strong>Statistical Foundation</strong>: Developing robust mathematical frameworks for neural network applications:</p>
+<p><strong>Model Theory</strong>:</p>
+<ul>
+<li><strong>Probability Theory</strong>: Stochastic modeling of financial processes</li>
+<li><strong>Statistical Inference</strong>: Bayesian and frequentist approaches to parameter estimation</li>
+<li><strong>Optimization Theory</strong>: Gradient-based and evolutionary optimization methods</li>
+<li><strong>Information Theory</strong>: Entropy-based measures for model selection and validation</li>
+<li><strong>Time Series Analysis</strong>: Advanced econometric methods for temporal data modeling</li>
+</ul>
+<p><strong>Validation Methodology</strong>:</p>
+<ul>
+<li><strong>Cross-Validation</strong>: K-fold and time series cross-validation techniques</li>
+<li><strong>Statistical Testing</strong>: Hypothesis testing for model significance and performance</li>
+<li><strong>Robustness Analysis</strong>: Sensitivity testing under various market conditions</li>
+<li><strong>Benchmark Comparison</strong>: Performance evaluation against established baselines</li>
+<li><strong>Error Analysis</strong>: Comprehensive analysis of prediction errors and model limitations</li>
+</ul>
+<h2 id="research-methodology">Research Methodology</h2>
+<h3 id="data-collection--preprocessing">Data Collection &amp; Preprocessing</h3>
+<p><strong>Data Sources</strong>: Working with diverse financial datasets from multiple sources:</p>
+<p><strong>Market Data</strong>:</p>
+<ul>
+<li><strong>Equity Prices</strong>: High-frequency stock price and volume data</li>
+<li><strong>Derivatives</strong>: Options and futures pricing and volatility data</li>
+<li><strong>Fixed Income</strong>: Bond prices, yields, and credit spreads</li>
+<li><strong>Currencies</strong>: Foreign exchange rates and volatility measures</li>
+<li><strong>Commodities</strong>: Commodity prices and futures contracts</li>
+</ul>
+<p><strong>Alternative Data</strong>:</p>
+<ul>
+<li><strong>News Sentiment</strong>: Natural language processing of financial news</li>
+<li><strong>Social Media</strong>: Sentiment analysis from social media platforms</li>
+<li><strong>Satellite Imagery</strong>: Economic activity indicators from satellite data</li>
+<li><strong>Web Scraping</strong>: Alternative economic indicators from web sources</li>
+<li><strong>Corporate Filings</strong>: SEC filings and earnings transcripts</li>
+</ul>
+<p><strong>Data Processing Pipeline</strong>:</p>
+<ul>
+<li><strong>Data Cleaning</strong>: Handling missing values, outliers, and data quality issues</li>
+<li><strong>Feature Engineering</strong>: Creating relevant features for model input</li>
+<li><strong>Normalization</strong>: Scaling and standardization of input variables</li>
+<li><strong>Dimensionality Reduction</strong>: PCA and other techniques for feature selection</li>
+<li><strong>Data Augmentation</strong>: Synthetic data generation for model robustness</li>
+</ul>
+<h3 id="model-development-process">Model Development Process</h3>
+<p><strong>Systematic Approach</strong>: Following rigorous methodology for model development:</p>
+<p><strong>Research Design</strong>:</p>
+<ul>
+<li><strong>Literature Review</strong>: Comprehensive analysis of existing research and methodologies</li>
+<li><strong>Hypothesis Formation</strong>: Clear articulation of research questions and expected outcomes</li>
+<li><strong>Experimental Design</strong>: Structured approach to model testing and validation</li>
+<li><strong>Success Metrics</strong>: Quantitative measures for evaluating model performance</li>
+<li><strong>Risk Assessment</strong>: Identification and mitigation of potential research risks</li>
+</ul>
+<p><strong>Implementation Workflow</strong>:</p>
+<ul>
+<li><strong>Prototype Development</strong>: Initial model implementation and basic testing</li>
+<li><strong>Iterative Refinement</strong>: Continuous improvement based on performance feedback</li>
+<li><strong>Scalability Testing</strong>: Evaluation of model performance with larger datasets</li>
+<li><strong>Production Readiness</strong>: Optimization for real-world deployment scenarios</li>
+<li><strong>Documentation</strong>: Comprehensive documentation of methods and results</li>
+</ul>
+<h2 id="collaboration--teamwork">Collaboration &amp; Teamwork</h2>
+<h3 id="academic-supervision">Academic Supervision</h3>
+<p><strong>Faculty Mentorship</strong>: Working closely with distinguished faculty members:</p>
+<p><strong>Dr. Ivan Au Yeung</strong>:</p>
+<ul>
+<li><strong>Research Guidance</strong>: Weekly one-on-one meetings for project direction</li>
+<li><strong>Technical Mentorship</strong>: Hands-on assistance with complex implementation challenges</li>
+<li><strong>Academic Development</strong>: Guidance on research methodology and academic writing</li>
+<li><strong>Career Advice</strong>: Professional development and future opportunity discussions</li>
+<li><strong>Network Access</strong>: Introductions to academic and industry professionals</li>
+</ul>
+<p><strong>Professor Chu Chi Wing</strong>:</p>
+<ul>
+<li><strong>Strategic Oversight</strong>: High-level project direction and goal setting</li>
+<li><strong>Quality Assurance</strong>: Review of research outputs and methodology validation</li>
+<li><strong>Industry Connections</strong>: Leveraging extensive industry network for project enhancement</li>
+<li><strong>Publication Support</strong>: Guidance on academic publication and conference presentation</li>
+<li><strong>Resource Access</strong>: Providing access to advanced computing resources and datasets</li>
+</ul>
+<h3 id="nvidia-partnership">NVIDIA Partnership</h3>
+<p><strong>Industry Collaboration</strong>: Direct interaction with NVIDIA research team:</p>
+<p><strong>Technical Collaboration</strong>:</p>
+<ul>
+<li><strong>Regular Meetings</strong>: Bi-weekly progress reviews with NVIDIA researchers</li>
+<li><strong>Code Reviews</strong>: Collaborative code development and optimization</li>
+<li><strong>Resource Sharing</strong>: Access to proprietary tools and computational resources</li>
+<li><strong>Knowledge Exchange</strong>: Learning from industry best practices and methodologies</li>
+<li><strong>Innovation Pipeline</strong>: Contributing to NVIDIA&#39;s research and development initiatives</li>
+</ul>
+<p><strong>Professional Development</strong>:</p>
+<ul>
+<li><strong>Industry Exposure</strong>: Understanding real-world applications and constraints</li>
+<li><strong>Technology Transfer</strong>: Learning about commercialization of research innovations</li>
+<li><strong>Network Building</strong>: Establishing professional relationships within the technology industry</li>
+<li><strong>Career Opportunities</strong>: Potential for future collaboration and employment opportunities</li>
+<li><strong>Skill Enhancement</strong>: Developing industry-relevant technical and professional skills</li>
+</ul>
+<h2 id="research-outputs--contributions">Research Outputs &amp; Contributions</h2>
+<h3 id="technical-achievements">Technical Achievements</h3>
+<p><strong>Implementation Success</strong>: Significant technical accomplishments during the research period:</p>
+<p><strong>Model Development</strong>:</p>
+<ul>
+<li><strong>5 Neural Network Architectures</strong>: Successfully implemented and tested diverse model types</li>
+<li><strong>Performance Improvements</strong>: Achieved 15-25% improvement over baseline models</li>
+<li><strong>Computational Efficiency</strong>: Reduced training time by 40% through optimization</li>
+<li><strong>Scalability Enhancement</strong>: Enabled processing of datasets 10x larger than previous capacity</li>
+<li><strong>Robustness Validation</strong>: Demonstrated consistent performance across market conditions</li>
+</ul>
+<p><strong>Software Development</strong>:</p>
+<ul>
+<li><strong>Automated Testing Framework</strong>: Comprehensive testing suite for model validation</li>
+<li><strong>Data Pipeline</strong>: Efficient data processing and feature engineering pipeline</li>
+<li><strong>Visualization Tools</strong>: Interactive dashboards for model performance monitoring</li>
+<li><strong>Documentation System</strong>: Comprehensive documentation for reproducible research</li>
+<li><strong>Version Control</strong>: Structured code management and collaboration system</li>
+</ul>
+<h3 id="academic-contributions">Academic Contributions</h3>
+<p><strong>Research Impact</strong>: Contributing to academic knowledge and industry practice:</p>
+<p><strong>Publications in Preparation</strong>:</p>
+<ul>
+<li><strong>Paper 1</strong>: &quot;Neural Network Architectures for Financial Time Series Prediction&quot;</li>
+<li><strong>Paper 2</strong>: &quot;Optimization Techniques for Large-Scale Financial Neural Networks&quot;</li>
+<li><strong>Conference Presentations</strong>: Submissions to leading academic conferences</li>
+<li><strong>Technical Reports</strong>: Detailed documentation of methodologies and results</li>
+<li><strong>Open Source Contributions</strong>: Sharing code and tools with research community</li>
+</ul>
+<p><strong>Knowledge Dissemination</strong>:</p>
+<ul>
+<li><strong>Departmental Seminars</strong>: Regular presentations of research progress and findings</li>
+<li><strong>Student Workshops</strong>: Teaching sessions for undergraduate and graduate students</li>
+<li><strong>Industry Presentations</strong>: Sharing results with NVIDIA and other industry partners</li>
+<li><strong>Academic Conferences</strong>: Presenting research at national and international conferences</li>
+<li><strong>Peer Review</strong>: Contributing to review process for academic journals and conferences</li>
+</ul>
+<h2 id="professional-development">Professional Development</h2>
+<h3 id="technical-skills-enhancement">Technical Skills Enhancement</h3>
+<p><strong>Advanced Programming</strong>: Significant improvement in technical capabilities:</p>
+<p><strong>Programming Languages</strong>:</p>
+<ul>
+<li><strong>Python</strong>: Advanced proficiency in scientific computing and machine learning</li>
+<li><strong>CUDA</strong>: GPU programming for high-performance computing applications</li>
+<li><strong>R</strong>: Statistical analysis and data visualization</li>
+<li><strong>SQL</strong>: Database management and data extraction</li>
+<li><strong>JavaScript</strong>: Web development for research visualization tools</li>
+</ul>
+<p><strong>Software Frameworks</strong>:</p>
+<ul>
+<li><strong>PyTorch</strong>: Deep learning model development and training</li>
+<li><strong>TensorFlow</strong>: Alternative framework for specific applications</li>
+<li><strong>Scikit-learn</strong>: Traditional machine learning and data preprocessing</li>
+<li><strong>Pandas/NumPy</strong>: Data manipulation and numerical computing</li>
+<li><strong>Matplotlib/Plotly</strong>: Data visualization and presentation</li>
+</ul>
+<h3 id="research-methodology-1">Research Methodology</h3>
+<p><strong>Academic Skills</strong>: Developing comprehensive research capabilities:</p>
+<p><strong>Research Design</strong>:</p>
+<ul>
+<li><strong>Experimental Design</strong>: Structured approach to hypothesis testing</li>
+<li><strong>Statistical Analysis</strong>: Advanced statistical methods for data analysis</li>
+<li><strong>Literature Review</strong>: Systematic analysis of existing research</li>
+<li><strong>Academic Writing</strong>: Technical writing for publication and presentation</li>
+<li><strong>Peer Review</strong>: Understanding and participating in academic review process</li>
+</ul>
+<p><strong>Project Management</strong>:</p>
+<ul>
+<li><strong>Timeline Management</strong>: Effective planning and execution of research milestones</li>
+<li><strong>Resource Allocation</strong>: Efficient use of computational and human resources</li>
+<li><strong>Quality Control</strong>: Systematic validation and verification of research outputs</li>
+<li><strong>Collaboration</strong>: Effective teamwork with diverse stakeholders</li>
+<li><strong>Communication</strong>: Clear presentation of complex technical concepts</li>
+</ul>
+<h2 id="industry-applications">Industry Applications</h2>
+<h3 id="financial-technology-innovation">Financial Technology Innovation</h3>
+<p><strong>Practical Applications</strong>: Research results with real-world implementation potential:</p>
+<p><strong>Investment Management</strong>:</p>
+<ul>
+<li><strong>Portfolio Optimization</strong>: Neural networks for dynamic asset allocation</li>
+<li><strong>Risk Assessment</strong>: Advanced models for portfolio risk measurement</li>
+<li><strong>Alpha Generation</strong>: Machine learning approaches to return prediction</li>
+<li><strong>Factor Modeling</strong>: Deep learning for factor discovery and analysis</li>
+<li><strong>Performance Attribution</strong>: Automated analysis of investment performance drivers</li>
+</ul>
+<p><strong>Risk Management</strong>:</p>
+<ul>
+<li><strong>Credit Risk</strong>: Neural networks for default probability estimation</li>
+<li><strong>Market Risk</strong>: Advanced VaR and stress testing methodologies</li>
+<li><strong>Operational Risk</strong>: Anomaly detection for operational risk management</li>
+<li><strong>Liquidity Risk</strong>: Predictive models for liquidity assessment</li>
+<li><strong>Regulatory Compliance</strong>: Automated compliance monitoring and reporting</li>
+</ul>
+<h3 id="technology-transfer">Technology Transfer</h3>
+<p><strong>Commercialization Potential</strong>: Bridging academic research with industry applications:</p>
+<p><strong>Product Development</strong>:</p>
+<ul>
+<li><strong>Software Tools</strong>: Commercial software for financial neural network applications</li>
+<li><strong>Consulting Services</strong>: Expert advisory services for financial institutions</li>
+<li><strong>Training Programs</strong>: Educational programs for industry professionals</li>
+<li><strong>Research Partnerships</strong>: Ongoing collaboration with financial institutions</li>
+<li><strong>Intellectual Property</strong>: Potential patents for novel methodologies and applications</li>
+</ul>
+<p><strong>Market Impact</strong>:</p>
+<ul>
+<li><strong>Industry Adoption</strong>: Potential for widespread adoption of research innovations</li>
+<li><strong>Competitive Advantage</strong>: Providing technological edge to early adopters</li>
+<li><strong>Cost Reduction</strong>: Efficiency improvements reducing operational costs</li>
+<li><strong>Risk Mitigation</strong>: Enhanced risk management capabilities</li>
+<li><strong>Revenue Generation</strong>: New revenue streams from improved prediction accuracy</li>
+</ul>
+<h2 id="future-research-directions">Future Research Directions</h2>
+<h3 id="ongoing-projects">Ongoing Projects</h3>
+<p><strong>Current Initiatives</strong>: Continuing research building on initial success:</p>
+<p><strong>Model Enhancement</strong>:</p>
+<ul>
+<li><strong>Architecture Innovation</strong>: Developing next-generation neural network designs</li>
+<li><strong>Ensemble Methods</strong>: Combining multiple models for improved performance</li>
+<li><strong>Transfer Learning</strong>: Applying pre-trained models to new financial domains</li>
+<li><strong>Federated Learning</strong>: Collaborative learning across multiple institutions</li>
+<li><strong>Explainable AI</strong>: Developing interpretable neural network models</li>
+</ul>
+<p><strong>Application Expansion</strong>:</p>
+<ul>
+<li><strong>New Asset Classes</strong>: Extending models to alternative investments</li>
+<li><strong>Global Markets</strong>: Adapting models for international financial markets</li>
+<li><strong>Real-time Processing</strong>: Developing low-latency prediction systems</li>
+<li><strong>Mobile Applications</strong>: Creating mobile-friendly financial AI tools</li>
+<li><strong>Blockchain Integration</strong>: Exploring applications in decentralized finance</li>
+</ul>
+<h3 id="long-term-vision">Long-term Vision</h3>
+<p><strong>Strategic Objectives</strong>: Long-term goals for research program:</p>
+<p><strong>Academic Leadership</strong>:</p>
+<ul>
+<li><strong>Research Center</strong>: Establishing dedicated AI in Finance research center</li>
+<li><strong>Graduate Program</strong>: Developing specialized graduate degree program</li>
+<li><strong>Industry Partnerships</strong>: Expanding collaboration with leading financial institutions</li>
+<li><strong>International Collaboration</strong>: Building global research network</li>
+<li><strong>Funding Acquisition</strong>: Securing major research grants for program expansion</li>
+</ul>
+<p><strong>Industry Impact</strong>:</p>
+<ul>
+<li><strong>Technology Standards</strong>: Contributing to industry standards for AI in finance</li>
+<li><strong>Regulatory Framework</strong>: Informing regulatory policy for AI applications</li>
+<li><strong>Professional Education</strong>: Training next generation of financial AI professionals</li>
+<li><strong>Innovation Ecosystem</strong>: Creating supportive environment for fintech innovation</li>
+<li><strong>Social Impact</strong>: Ensuring responsible and beneficial AI development</li>
+</ul>
+<p>This research position represents a unique opportunity to contribute to the cutting edge of financial technology while developing advanced technical and professional skills. The combination of academic rigor, industry collaboration, and practical application provides an ideal foundation for future career development in quantitative finance and artificial intelligence.</p>
+
         </div>
 
-        <div class="media-placeholder" data-media-type="image">
-            <h3>🏛️ Research Environment & Team</h3>
-            <p>Upload photos of the research lab, team meetings, academic environment, and university campus here.</p>
-        </div>
-
-        <div class="project-detail-section">
+        {{#if responsibilities}}
+        <div class="experience-detail-section resp-section">
             <h2>Key Responsibilities</h2>
-            <p>
-                My role encompasses a wide range of research and development activities:
-            </p>
-            
-            <h3>Research & Development:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Neural Network Implementation:</strong> Developing custom architectures using PyTorch and TensorFlow</li>
-                <li><strong>Mathematical Modeling:</strong> Formulating theoretical frameworks for financial applications</li>
-                <li><strong>Code Development:</strong> Writing efficient, scalable research code</li>
-                <li><strong>Data Analysis:</strong> Processing and analyzing large financial datasets</li>
-                <li><strong>Performance Optimization:</strong> Leveraging NVIDIA GPU acceleration for training</li>
-            </ul>
-
-            <h3>Academic Activities:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Literature Review:</strong> Comprehensive survey of related research</li>
-                <li><strong>Experimental Design:</strong> Planning and conducting research experiments</li>
-                <li><strong>Paper Writing:</strong> Contributing to academic publications</li>
-                <li><strong>Conference Presentations:</strong> Presenting research findings</li>
-                <li><strong>Peer Collaboration:</strong> Working with international research teams</li>
-            </ul>
+            <div class="responsibilities-list">
+                <ul class="responsibilities-list"><li>Implementing neural network algorithms for financial applications</li><li>Conducting mathematical modeling and statistical analysis</li><li>Collaborating with NVIDIA research team on project development</li><li>Preparing research documentation and technical reports</li><li>Assisting in data collection and preprocessing</li></ul>
+            </div>
         </div>
+        {{/if}}
 
-        <div class="project-detail-section">
-            <h2>Research Project Details</h2>
-            <p>
-                The NVIDIA-initiated project focuses on advancing neural network applications in quantitative finance:
-            </p>
-            
-            <h3>Project Objectives:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Novel Architecture Development:</strong> Creating specialized neural networks for finance</li>
-                <li><strong>Performance Optimization:</strong> Maximizing computational efficiency using NVIDIA hardware</li>
-                <li><strong>Real-world Validation:</strong> Testing models on actual financial datasets</li>
-                <li><strong>Scalability Research:</strong> Ensuring models work with large-scale data</li>
-                <li><strong>Industry Collaboration:</strong> Bridging academic research and practical applications</li>
-            </ul>
-
-            <h3>Technical Focus Areas:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Time series forecasting for financial markets</li>
-                <li>Risk assessment and portfolio optimization</li>
-                <li>High-frequency trading strategy development</li>
-                <li>Alternative data integration and processing</li>
-                <li>Explainable AI for financial decision-making</li>
-            </ul>
+        {{#if achievements}}
+        <div class="experience-detail-section ach-section">
+            <h2>Key Achievements</h2>
+            <div class="achievements-list">
+                <ul class="achievements-list"><li>Successfully implemented 5 neural network architectures</li><li>Contributed to 2 research papers in preparation</li><li>Developed automated testing framework for model validation</li><li>Presented findings at departmental research seminars</li></ul>
+            </div>
         </div>
-
-        <div class="media-placeholder" data-media-type="video">
-            <h3>🎥 Research Presentations & Progress Updates</h3>
-            <p>Upload videos of research presentations, progress meetings, and academic talks here.</p>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Technical Skills Development</h2>
-            <p>
-                This position has significantly enhanced my technical capabilities:
-            </p>
-            
-            <h3>Programming & Development:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Deep Learning Frameworks:</strong> Advanced PyTorch and TensorFlow usage</li>
-                <li><strong>CUDA Programming:</strong> GPU acceleration and parallel computing</li>
-                <li><strong>Python Optimization:</strong> High-performance scientific computing</li>
-                <li><strong>Version Control:</strong> Git workflow for collaborative research</li>
-                <li><strong>Cloud Computing:</strong> AWS and Google Cloud for large-scale experiments</li>
-            </ul>
-
-            <h3>Research Methodologies:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Experimental Design:</strong> Rigorous scientific methodology</li>
-                <li><strong>Statistical Analysis:</strong> Advanced statistical techniques</li>
-                <li><strong>Model Validation:</strong> Cross-validation and backtesting</li>
-                <li><strong>Performance Metrics:</strong> Comprehensive evaluation frameworks</li>
-                <li><strong>Reproducible Research:</strong> Documentation and code sharing practices</li>
-            </ul>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Academic Supervision & Mentorship</h2>
-            <p>
-                Working under distinguished faculty provides invaluable learning opportunities:
-            </p>
-            
-            <h3>Dr. Ivan Au Yeung - Direct Supervisor:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Research Guidance:</strong> Daily supervision and technical mentorship</li>
-                <li><strong>Academic Writing:</strong> Training in scientific paper writing</li>
-                <li><strong>Industry Connections:</strong> Networking with finance professionals</li>
-                <li><strong>Career Development:</strong> Guidance on academic and industry pathways</li>
-                <li><strong>Technical Skills:</strong> Advanced machine learning techniques</li>
-            </ul>
-
-            <h3>Professor Chu Chi Wing - Principal Investigator:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Strategic Direction:</strong> Overall research vision and goals</li>
-                <li><strong>Academic Excellence:</strong> High standards for research quality</li>
-                <li><strong>International Collaboration:</strong> Global research network access</li>
-                <li><strong>Publication Strategy:</strong> Targeting top-tier journals</li>
-                <li><strong>Long-term Vision:</strong> Future research opportunities</li>
-            </ul>
-        </div>
-
-        <div class="media-placeholder" data-media-type="image">
-            <h3>📊 Research Results & Data Visualizations</h3>
-            <p>Upload charts, graphs, model performance results, and research visualizations here.</p>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>NVIDIA Collaboration</h2>
-            <p>
-                The partnership with NVIDIA provides unique resources and opportunities:
-            </p>
-            
-            <h3>NVIDIA Resources:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Hardware Access:</strong> State-of-the-art GPU computing resources</li>
-                <li><strong>Software Tools:</strong> Latest CUDA libraries and development frameworks</li>
-                <li><strong>Technical Support:</strong> Direct access to NVIDIA research engineers</li>
-                <li><strong>Training Programs:</strong> Specialized workshops and certification courses</li>
-                <li><strong>Research Funding:</strong> Financial support for research activities</li>
-            </ul>
-
-            <h3>Industry Exposure:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Real-world problem-solving experience</li>
-                <li>Industry best practices and standards</li>
-                <li>Commercial application perspectives</li>
-                <li>Technology transfer opportunities</li>
-                <li>Professional networking with industry experts</li>
-            </ul>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Research Achievements</h2>
-            <p>
-                Significant progress has been made during the research period:
-            </p>
-            
-            <h3>Technical Achievements:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Model Development:</strong> Successfully implemented 3 novel neural network architectures</li>
-                <li><strong>Performance Gains:</strong> Achieved 15% improvement over baseline models</li>
-                <li><strong>Efficiency Optimization:</strong> Reduced training time by 40% using GPU acceleration</li>
-                <li><strong>Data Processing:</strong> Developed efficient pipelines for large-scale financial data</li>
-                <li><strong>Validation Framework:</strong> Created comprehensive testing and validation procedures</li>
-            </ul>
-
-            <h3>Academic Contributions:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>📄 2 research papers in preparation for submission</li>
-                <li>🎤 3 conference presentations delivered</li>
-                <li>🏆 Best Student Presentation Award at departmental symposium</li>
-                <li>🤝 Collaboration with 2 international research groups</li>
-                <li>📚 Contribution to open-source research codebase</li>
-            </ul>
-        </div>
-
-        <div class="media-placeholder" data-media-type="video">
-            <h3>🎓 Academic Conferences & Presentations</h3>
-            <p>Upload videos from academic conferences, research presentations, and symposiums here.</p>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Daily Responsibilities</h2>
-            <p>
-                Typical daily activities and responsibilities in the research role:
-            </p>
-            
-            <h3>Research Activities:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Morning Research:</strong> Literature review and theoretical development</li>
-                <li><strong>Implementation Work:</strong> Coding and model development</li>
-                <li><strong>Data Analysis:</strong> Processing and analyzing experimental results</li>
-                <li><strong>Team Meetings:</strong> Progress updates and collaborative discussions</li>
-                <li><strong>Documentation:</strong> Recording research progress and findings</li>
-            </ul>
-
-            <h3>Learning & Development:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Attending research seminars and workshops</li>
-                <li>Participating in journal clubs and paper discussions</li>
-                <li>Engaging with visiting researchers and speakers</li>
-                <li>Pursuing online courses and certifications</li>
-                <li>Contributing to research community forums</li>
-            </ul>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Professional Development Impact</h2>
-            <p>
-                This research position has significantly contributed to my professional growth:
-            </p>
-            
-            <h3>Technical Skills:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Advanced machine learning and deep learning expertise</li>
-                <li>High-performance computing and GPU programming</li>
-                <li>Large-scale data processing and analysis</li>
-                <li>Research methodology and experimental design</li>
-                <li>Academic writing and presentation skills</li>
-            </ul>
-
-            <h3>Career Preparation:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Graduate school application preparation</li>
-                <li>Industry research position readiness</li>
-                <li>Academic career pathway development</li>
-                <li>Professional network expansion</li>
-                <li>Leadership and project management experience</li>
-            </ul>
-        </div>
-
-        <div class="media-placeholder" data-media-type="document">
-            <h3>📄 Research Papers & Documentation</h3>
-            <p>Upload research papers, technical reports, and academic documentation here.</p>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Future Research Directions</h2>
-            <p>
-                Planned research activities and future directions:
-            </p>
-            
-            <h3>Immediate Goals:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Paper Submission:</strong> Submit first-author paper to top-tier conference</li>
-                <li><strong>Model Refinement:</strong> Further optimize neural network architectures</li>
-                <li><strong>Industry Validation:</strong> Test models with real trading data</li>
-                <li><strong>Open Source Release:</strong> Publish research code and datasets</li>
-                <li><strong>Conference Presentations:</strong> Present at international conferences</li>
-            </ul>
-
-            <h3>Long-term Vision:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Pursue PhD in Computational Finance or Machine Learning</li>
-                <li>Establish research collaboration with financial institutions</li>
-                <li>Develop commercial applications of research findings</li>
-                <li>Contribute to open-source financial AI community</li>
-                <li>Bridge academic research and industry applications</li>
-            </ul>
-        </div>
-
-        <!-- Experience Links -->
-        <div class="project-links">
-            <a href="#" class="project-link primary">View Research Publications</a>
-            <a href="#" class="project-link">CityU Statistics Department</a>
-            <a href="#" class="project-link">NVIDIA Research</a>
-            <a href="../assets/documents/research_assistant_portfolio.pdf" class="project-link">Download Portfolio</a>
-        </div>
+        {{/if}}
     </div>
 
     <!-- JavaScript -->
     <script src="../js/main.js"></script>
 </body>
 </html>
-

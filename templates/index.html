@@ -51,32 +51,30 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-content">
-            <div class="hero-intro">
-                <div class="hero-text">
-                    <h1 class="hero-title">{{site_title}}</h1>
-                    <p class="hero-subtitle">{{description}}</p>
-                    <div class="cta-buttons">
-                        <a href="#contact" class="btn primary-btn">Contact Me</a>
-                        <a href="{{resume}}" target="_blank" class="btn secondary-btn">View Resume</a>
-                    </div>
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>{{site_title}}</h1>
+                <p class="hero-subtitle">{{description}}</p>
+                <div class="hero-description">
+                    {{about_intro}}
                 </div>
-                <div class="hero-image">
-                    <img src="{{profile_image}}" alt="{{author}} Profile Photo" class="profile-img">
+                <div class="social-links">
+                    <a href="mailto:{{email}}" class="social-link">Email</a>
+                    <a href="{{linkedin}}" target="_blank" class="social-link">LinkedIn</a>
+                    <a href="{{github}}" target="_blank" class="social-link">GitHub</a>
+                    <a href="{{resume}}" target="_blank" class="social-link">Resume</a>
                 </div>
             </div>
             
             <div class="terminal-container">
                 <div class="terminal-header">
-                    <div class="terminal-buttons">
-                        <span class="terminal-btn close"></span>
-                        <span class="terminal-btn minimize"></span>
-                        <span class="terminal-btn expand"></span>
-                    </div>
-                    <div class="terminal-title">sean@portfolio ~ %</div>
+                    <div class="terminal-button close"></div>
+                    <div class="terminal-button minimize"></div>
+                    <div class="terminal-button maximize"></div>
+                    <span class="terminal-title">sean@portfolio ~ %</span>
                 </div>
-                <div class="terminal-body">
+                <div class="terminal-content">
                     {{terminal_commands}}
                 </div>
             </div>
@@ -84,62 +82,65 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section fade-in">
-        <h2>Featured Projects</h2>
-        <div class="projects-grid">
-            {{projects}}
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                {{projects}}
+            </div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="section fade-in">
-        <h2>Professional Experience</h2>
-        <div class="timeline">
-            {{experience}}
+    <section id="experience" class="section">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                {{experience}}
+            </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section fade-in">
-        <h2>Technical Skills</h2>
-        <div class="skills-container">
-            {{skills}}
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                {{skills}}
+            </div>
         </div>
     </section>
     
     <!-- Interests Section -->
-    <section id="interests" class="section fade-in">
-        <h2>Interests & Activities</h2>
-        <div class="interests-container">
-            {{interests}}
+    <section id="interests" class="section light-section">
+        <div class="container">
+            <h2>Interests & Activities</h2>
+            <div class="interests-grid">
+                {{interests}}
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section fade-in">
-        <h2>Get In Touch</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                    <div class="contact-text">
-                        <h3>Email</h3>
-                        <p><a href="mailto:{{email}}">{{email}}</a></p>
-                    </div>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="contact-description">Feel free to reach out for collaborations, opportunities, or just to connect!</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Email</h3>
+                    <p><a href="mailto:{{email}}">{{email}}</a></p>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
-                    <div class="contact-text">
-                        <h3>LinkedIn</h3>
-                        <p><a href="{{linkedin}}" target="_blank">Connect on LinkedIn</a></p>
-                    </div>
+                
+                <div class="contact-card">
+                    <h3>LinkedIn</h3>
+                    <p><a href="{{linkedin}}" target="_blank">Connect on LinkedIn</a></p>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fab fa-github"></i></div>
-                    <div class="contact-text">
-                        <h3>GitHub</h3>
-                        <p><a href="{{github}}" target="_blank">View Projects</a></p>
-                    </div>
+                
+                <div class="contact-card">
+                    <h3>GitHub</h3>
+                    <p><a href="{{github}}" target="_blank">View Projects</a></p>
                 </div>
             </div>
         </div>
@@ -148,11 +149,27 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 {{author}}. All rights reserved.</p>
+            <p class="copyright">&copy; 2025 {{author}}. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script>
+        // Simple fade-in animation for sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>

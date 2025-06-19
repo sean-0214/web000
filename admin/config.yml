@@ -26,7 +26,8 @@ collections:
     files:
       - label: "Site Settings"
         name: "settings"
-        file: "_data/settings.yml"
+        file: "content/settings.yml"
+        description: "Configure your website's general settings and social media links"
         editor:
           preview: false
         fields:
@@ -106,7 +107,8 @@ collections:
     files:
       - label: "About"
         name: "about"
-        file: "_data/about.yml"
+        file: "content/about.yml"
+        description: "Configure your about page, terminal commands, skills, and interests"
         fields:
           - {label: "Intro Text", name: "intro", widget: "text"}
           - {label: "Terminal Commands", name: "terminal_commands", widget: "list", fields: [{label: "Command", name: "command", widget: "string"}, {label: "Output", name: "output", widget: "string"}]}

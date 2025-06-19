@@ -7,6 +7,10 @@
     <meta name="description" content="Sean Chiang's experience as {{position}} at {{organization}}.">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -17,7 +21,7 @@
                 <ul class="nav-menu">
                     <li><a href="../index.html#home">Home</a></li>
                     <li><a href="../index.html#projects">Projects</a></li>
-                    <li><a href="../index.html#experience">Experience</a></li>
+                    <li><a href="../index.html#experience" class="active">Experience</a></li>
                     <li><a href="../index.html#skills">Skills</a></li>
                     <li><a href="../index.html#contact">Contact</a></li>
                 </ul>
@@ -26,38 +30,44 @@
     </header>
 
     <!-- Experience Detail Hero -->
-    <section class="project-detail-hero">
+    <section class="experience-detail-hero">
         <div class="container">
-            <a href="../index.html#experience" class="back-button">← Back to Experience</a>
-            <h1>{{position}}</h1>
-            <p class="subtitle">{{organization}} • {{start_date}} - {{end_date}}</p>
-            <p class="achievement">{{location}}</p>
+            <a href="../index.html#experience" class="back-button"><span class="arrow">←</span> Back to Experience</a>
+            <h1 class="experience-title">{{position}}</h1>
+            <div class="experience-meta">
+                <p class="experience-subtitle">{{organization}} <span class="dot">•</span> <span class="period">{{start_date}} — {{end_date}}</span></p>
+                <p class="experience-location">{{location}}</p>
+            </div>
         </div>
     </section>
 
     <!-- Experience Content -->
-    <div class="project-detail-content">
+    <div class="experience-detail-content container">
         {{#if hero_image}}
-        <div class="hero-image">
+        <div class="experience-hero-image">
             <img src="{{hero_image}}" alt="{{title}}">
         </div>
         {{/if}}
 
-        <div class="project-detail-section">
+        <div class="experience-detail-section content-section">
             {{content}}
         </div>
 
         {{#if responsibilities}}
-        <div class="project-detail-section">
+        <div class="experience-detail-section resp-section">
             <h2>Key Responsibilities</h2>
-            {{responsibilities}}
+            <div class="responsibilities-list">
+                {{responsibilities}}
+            </div>
         </div>
         {{/if}}
 
         {{#if achievements}}
-        <div class="project-detail-section">
-            <h2>Achievements</h2>
-            {{achievements}}
+        <div class="experience-detail-section ach-section">
+            <h2>Key Achievements</h2>
+            <div class="achievements-list">
+                {{achievements}}
+            </div>
         </div>
         {{/if}}
     </div>

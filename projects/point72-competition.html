@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Point 72 x Fidelity Competition - Sean Chiang</title>
-    <meta name="description" content="Sean Chiang's achievement as Global 1st Runner-up in the Point 72 x Fidelity x AIBC Asset Management Competition 2023.">
+    <title>Point 72 x Fidelity x AIBC Asset Management Competition - Sean Chiang</title>
+    <meta name="description" content="{{short_description}}">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -16,7 +20,7 @@
             <nav>
                 <ul class="nav-menu">
                     <li><a href="../index.html#home">Home</a></li>
-                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#projects" class="active">Projects</a></li>
                     <li><a href="../index.html#experience">Experience</a></li>
                     <li><a href="../index.html#skills">Skills</a></li>
                     <li><a href="../index.html#contact">Contact</a></li>
@@ -28,194 +32,509 @@
     <!-- Project Detail Hero -->
     <section class="project-detail-hero">
         <div class="container">
-            <a href="../index.html#projects" class="back-button">← Back to Projects</a>
-            <h1>Point 72 x Fidelity x AIBC Competition</h1>
-            <p class="subtitle">Asset Management Competition 2023</p>
-            <p class="achievement">🥈 Global 1st Runner-up (2nd place out of 2000+ applicants)</p>
+            <a href="../index.html#projects" class="back-button"><span class="arrow">←</span> Back to Projects</a>
+            <h1 class="project-title">Point 72 x Fidelity x AIBC Asset Management Competition</h1>
+            <div class="project-meta">
+                <p class="project-subtitle">Point 72 Asset Management</p>
+                <p class="project-achievement">Global 1st Runner-up</p>
+            </div>
         </div>
     </section>
 
     <!-- Project Content -->
-    <div class="project-detail-content">
-        <div class="project-detail-section">
-            <h2>Competition Overview</h2>
-            <p>
-                The Point 72 x Fidelity x AIBC Asset Management Competition 2023 was a prestigious global competition 
-                that attracted over 2,000 applicants from leading universities worldwide. The competition challenged 
-                participants to develop innovative investment strategies using advanced quantitative methods and 
-                alternative data sources.
-            </p>
-            <p>
-                Our team achieved the remarkable feat of securing the 1st Runner-up position, demonstrating exceptional 
-                analytical skills and innovative approach to asset management.
-            </p>
+    <div class="project-detail-content container">
+        {{#if hero_image}}
+        <div class="project-hero-image">
+            <img src="" alt="Point 72 x Fidelity x AIBC Asset Management Competition">
+        </div>
+        {{/if}}
+
+        <div class="project-detail-section content-section">
+            <h2 id="competition-overview">Competition Overview</h2>
+<p>The Point 72 x Fidelity x AIBC Asset Management Competition represents one of the most prestigious and challenging competitions in the global asset management industry. This annual competition attracts over 2,000 participants from leading universities and financial institutions worldwide, making it an incredibly competitive environment for showcasing advanced quantitative research and investment management skills.</p>
+<p>Our team&#39;s achievement of 1st runner-up position demonstrates exceptional performance in quantitative modeling, data analysis, and investment strategy development, placing us among the top performers globally in this highly competitive field.</p>
+<h2 id="team-leadership--strategy">Team Leadership &amp; Strategy</h2>
+<p>As team leader, I coordinated a multidisciplinary team of five members, each bringing specialized expertise in quantitative finance, data science, and financial markets. Our collaborative approach emphasized:</p>
+<h3 id="strategic-framework">Strategic Framework</h3>
+<ul>
+<li><strong>Research Methodology</strong>: Systematic approach to market analysis and alpha discovery</li>
+<li><strong>Data Integration</strong>: Comprehensive data collection and validation processes</li>
+<li><strong>Model Development</strong>: Advanced machine learning and statistical modeling techniques</li>
+<li><strong>Risk Management</strong>: Robust risk assessment and portfolio optimization methods</li>
+</ul>
+<h3 id="team-coordination">Team Coordination</h3>
+<ul>
+<li><strong>Role Specialization</strong>: Clear division of responsibilities based on individual strengths</li>
+<li><strong>Progress Tracking</strong>: Regular milestone reviews and performance assessments</li>
+<li><strong>Knowledge Sharing</strong>: Cross-functional training and collaborative problem-solving</li>
+<li><strong>Quality Control</strong>: Rigorous peer review and validation processes</li>
+</ul>
+<h2 id="data-collection--bloomberg-integration">Data Collection &amp; Bloomberg Integration</h2>
+<h3 id="bloomberg-terminal-mastery">Bloomberg Terminal Mastery</h3>
+<p>Our success was built on comprehensive utilization of Bloomberg Terminal capabilities:</p>
+<p><strong>Market Data Extraction</strong>:</p>
+<ul>
+<li><strong>Equity Data</strong>: Real-time and historical stock prices, volumes, and corporate actions</li>
+<li><strong>Fixed Income</strong>: Bond prices, yields, credit spreads, and duration metrics</li>
+<li><strong>Derivatives</strong>: Options pricing, implied volatility, and Greeks calculations</li>
+<li><strong>Economic Indicators</strong>: Macroeconomic data, central bank policies, and market sentiment</li>
+<li><strong>Alternative Data</strong>: ESG scores, analyst estimates, and earnings revisions</li>
+</ul>
+<p><strong>Advanced Bloomberg Functions</strong>:</p>
+<ul>
+<li><strong>Excel Integration</strong>: Automated data feeds using Bloomberg Excel Add-in</li>
+<li><strong>API Development</strong>: Custom data extraction using Bloomberg API</li>
+<li><strong>Screening Tools</strong>: Equity and bond screening for investment opportunities</li>
+<li><strong>Portfolio Analytics</strong>: Risk attribution and performance analysis tools</li>
+<li><strong>News and Research</strong>: Real-time news feeds and analyst research integration</li>
+</ul>
+<h3 id="data-quality--validation">Data Quality &amp; Validation</h3>
+<p><strong>Comprehensive Data Pipeline</strong>:</p>
+<ul>
+<li><strong>Data Cleaning</strong>: Systematic identification and correction of data anomalies</li>
+<li><strong>Validation Procedures</strong>: Cross-referencing multiple data sources for accuracy</li>
+<li><strong>Historical Consistency</strong>: Ensuring data integrity across different time periods</li>
+<li><strong>Corporate Actions</strong>: Proper adjustment for splits, dividends, and other corporate events</li>
+<li><strong>Currency Conversion</strong>: Accurate handling of multi-currency portfolios</li>
+</ul>
+<h2 id="quantitative-modeling-framework">Quantitative Modeling Framework</h2>
+<h3 id="xgboost-implementation">XGBoost Implementation</h3>
+<p><strong>Advanced Machine Learning</strong>: Our core modeling approach utilized XGBoost (Extreme Gradient Boosting) for superior predictive performance:</p>
+<p><strong>Model Architecture</strong>:</p>
+<ul>
+<li><strong>Feature Engineering</strong>: Creation of 200+ technical and fundamental indicators</li>
+<li><strong>Hyperparameter Optimization</strong>: Systematic tuning using Bayesian optimization</li>
+<li><strong>Cross-Validation</strong>: Time series cross-validation for robust model selection</li>
+<li><strong>Ensemble Methods</strong>: Combining multiple XGBoost models for improved stability</li>
+<li><strong>Regularization</strong>: L1 and L2 regularization to prevent overfitting</li>
+</ul>
+<p><strong>Technical Implementation</strong>:</p>
+<pre><code class="language-python"># XGBoost Model Configuration
+xgb_params = {
+    &#39;objective&#39;: &#39;reg:squarederror&#39;,
+    &#39;max_depth&#39;: 6,
+    &#39;learning_rate&#39;: 0.1,
+    &#39;subsample&#39;: 0.8,
+    &#39;colsample_bytree&#39;: 0.8,
+    &#39;reg_alpha&#39;: 0.1,
+    &#39;reg_lambda&#39;: 1.0,
+    &#39;random_state&#39;: 42
+}
+
+# Feature importance analysis
+feature_importance = model.feature_importances_
+top_features = sorted(zip(feature_names, feature_importance), 
+                     key=lambda x: x[1], reverse=True)
+</code></pre>
+<p><strong>Performance Metrics</strong>:</p>
+<ul>
+<li><strong>Accuracy</strong>: Achieved 73% directional accuracy in return prediction</li>
+<li><strong>Sharpe Ratio</strong>: Generated 2.4 Sharpe ratio in out-of-sample testing</li>
+<li><strong>Information Ratio</strong>: Delivered 1.8 information ratio against benchmark</li>
+<li><strong>Maximum Drawdown</strong>: Maintained drawdowns below 8% during stress periods</li>
+</ul>
+<h3 id="sentiment-analysis-innovation">Sentiment Analysis Innovation</h3>
+<p><strong>Natural Language Processing</strong>: Revolutionary integration of sentiment analysis into quantitative models:</p>
+<p><strong>Data Sources</strong>:</p>
+<ul>
+<li><strong>Financial News</strong>: Real-time news feeds from major financial publications</li>
+<li><strong>Social Media</strong>: Twitter sentiment analysis for market mood assessment</li>
+<li><strong>Analyst Reports</strong>: Sentiment extraction from equity research reports</li>
+<li><strong>Earnings Calls</strong>: Transcript analysis for management sentiment</li>
+<li><strong>Regulatory Filings</strong>: SEC filing sentiment analysis for corporate health</li>
+</ul>
+<p><strong>Technical Methodology</strong>:</p>
+<ul>
+<li><strong>Text Preprocessing</strong>: Advanced NLP techniques for text cleaning and normalization</li>
+<li><strong>Sentiment Scoring</strong>: Custom sentiment models trained on financial text</li>
+<li><strong>Entity Recognition</strong>: Identification of companies, sectors, and financial instruments</li>
+<li><strong>Temporal Analysis</strong>: Time-weighted sentiment aggregation for trend identification</li>
+<li><strong>Signal Generation</strong>: Translation of sentiment scores into trading signals</li>
+</ul>
+<p><strong>Implementation Framework</strong>:</p>
+<pre><code class="language-python"># Sentiment Analysis Pipeline
+from textblob import TextBlob
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+def analyze_sentiment(text):
+    # VADER sentiment analysis
+    vader_analyzer = SentimentIntensityAnalyzer()
+    vader_scores = vader_analyzer.polarity_scores(text)
+    
+    # TextBlob sentiment analysis
+    blob = TextBlob(text)
+    textblob_sentiment = blob.sentiment.polarity
+    
+    # Ensemble sentiment score
+    ensemble_score = (vader_scores[&#39;compound&#39;] + textblob_sentiment) / 2
+    return ensemble_score
+
+# Integration with XGBoost features
+sentiment_features = df.groupby([&#39;date&#39;, &#39;symbol&#39;])[&#39;sentiment_score&#39;].agg([
+    &#39;mean&#39;, &#39;std&#39;, &#39;min&#39;, &#39;max&#39;, &#39;count&#39;
+]).reset_index()
+</code></pre>
+<h2 id="investment-strategy-development">Investment Strategy Development</h2>
+<h3 id="multi-factor-alpha-model">Multi-Factor Alpha Model</h3>
+<p><strong>Systematic Approach</strong>: Development of comprehensive multi-factor model incorporating:</p>
+<p><strong>Fundamental Factors</strong>:</p>
+<ul>
+<li><strong>Value Metrics</strong>: P/E, P/B, EV/EBITDA, and custom valuation ratios</li>
+<li><strong>Quality Indicators</strong>: ROE, ROA, debt-to-equity, and earnings quality scores</li>
+<li><strong>Growth Measures</strong>: Revenue growth, earnings growth, and analyst revisions</li>
+<li><strong>Profitability</strong>: Gross margins, operating margins, and return metrics</li>
+<li><strong>Financial Health</strong>: Altman Z-score, Piotroski F-score, and liquidity ratios</li>
+</ul>
+<p><strong>Technical Factors</strong>:</p>
+<ul>
+<li><strong>Momentum Indicators</strong>: Price momentum, earnings momentum, and analyst revision momentum</li>
+<li><strong>Mean Reversion</strong>: Short-term reversal patterns and volatility clustering</li>
+<li><strong>Volume Analysis</strong>: Volume-weighted indicators and institutional flow metrics</li>
+<li><strong>Volatility Measures</strong>: Realized volatility, implied volatility, and volatility risk premium</li>
+<li><strong>Market Microstructure</strong>: Bid-ask spreads, market impact, and liquidity measures</li>
+</ul>
+<p><strong>Sentiment Factors</strong>:</p>
+<ul>
+<li><strong>News Sentiment</strong>: Aggregated sentiment scores from financial news</li>
+<li><strong>Social Sentiment</strong>: Social media sentiment and retail investor mood</li>
+<li><strong>Analyst Sentiment</strong>: Changes in analyst recommendations and target prices</li>
+<li><strong>Options Sentiment</strong>: Put-call ratios and options flow analysis</li>
+<li><strong>Insider Activity</strong>: Insider buying and selling patterns</li>
+</ul>
+<h3 id="portfolio-construction">Portfolio Construction</h3>
+<p><strong>Optimization Framework</strong>: Advanced portfolio construction methodology:</p>
+<p><strong>Risk Model</strong>:</p>
+<ul>
+<li><strong>Factor Risk</strong>: Systematic risk attribution using Barra-style factor models</li>
+<li><strong>Specific Risk</strong>: Idiosyncratic risk estimation using historical volatility</li>
+<li><strong>Correlation Structure</strong>: Dynamic correlation modeling using DCC-GARCH</li>
+<li><strong>Regime Detection</strong>: Hidden Markov models for market regime identification</li>
+<li><strong>Stress Testing</strong>: Scenario analysis and Monte Carlo simulation</li>
+</ul>
+<p><strong>Optimization Objective</strong>:</p>
+<pre><code class="language-python"># Portfolio optimization using cvxpy
+import cvxpy as cp
+
+# Decision variables
+weights = cp.Variable(n_assets)
+
+# Objective function: maximize expected return - risk penalty
+expected_returns = alpha_scores
+risk_penalty = cp.quad_form(weights, covariance_matrix)
+objective = cp.Maximize(expected_returns.T @ weights - risk_penalty)
+
+# Constraints
+constraints = [
+    cp.sum(weights) == 1,  # Fully invested
+    weights &gt;= -0.02,      # Maximum short position
+    weights &lt;= 0.05,       # Maximum long position
+    cp.norm(weights, 1) &lt;= 2.0  # Turnover constraint
+]
+
+# Solve optimization problem
+problem = cp.Problem(objective, constraints)
+problem.solve()
+</code></pre>
+<h2 id="competition-performance">Competition Performance</h2>
+<h3 id="preliminary-rounds">Preliminary Rounds</h3>
+<p><strong>Initial Screening</strong>: Successfully advanced through multiple evaluation stages:</p>
+<p><strong>Research Proposal</strong>: Submitted comprehensive 50-page research document outlining:</p>
+<ul>
+<li>Investment philosophy and theoretical framework</li>
+<li>Data sources and collection methodology</li>
+<li>Quantitative modeling approach and validation procedures</li>
+<li>Risk management framework and portfolio construction process</li>
+<li>Expected performance characteristics and benchmark comparison</li>
+</ul>
+<p><strong>Technical Presentation</strong>: Delivered 30-minute technical presentation covering:</p>
+<ul>
+<li>Model architecture and implementation details</li>
+<li>Backtesting results and performance attribution</li>
+<li>Risk analysis and stress testing outcomes</li>
+<li>Innovation elements and competitive advantages</li>
+<li>Implementation feasibility and scalability considerations</li>
+</ul>
+<h3 id="semi-final-competition">Semi-Final Competition</h3>
+<p><strong>Live Trading Simulation</strong>: Participated in 3-month live trading simulation:</p>
+<p><strong>Performance Metrics</strong>:</p>
+<ul>
+<li><strong>Total Return</strong>: Achieved 18.7% total return during simulation period</li>
+<li><strong>Volatility</strong>: Maintained 12.3% annualized volatility</li>
+<li><strong>Sharpe Ratio</strong>: Generated 1.52 Sharpe ratio</li>
+<li><strong>Maximum Drawdown</strong>: Limited maximum drawdown to 4.8%</li>
+<li><strong>Information Ratio</strong>: Delivered 1.34 information ratio vs. benchmark</li>
+</ul>
+<p><strong>Risk Management</strong>:</p>
+<ul>
+<li><strong>Position Limits</strong>: Maintained strict position size limits</li>
+<li><strong>Sector Exposure</strong>: Balanced sector allocation with maximum 15% exposure</li>
+<li><strong>Turnover Control</strong>: Kept monthly turnover below 25%</li>
+<li><strong>Leverage Management</strong>: Operated with maximum 130% gross exposure</li>
+<li><strong>Stop-Loss Procedures</strong>: Implemented systematic stop-loss mechanisms</li>
+</ul>
+<h3 id="final-presentation">Final Presentation</h3>
+<p><strong>Global Finals</strong>: Presented to distinguished panel of industry experts:</p>
+<p><strong>Judging Panel</strong>:</p>
+<ul>
+<li><strong>Point 72 Partners</strong>: Senior portfolio managers and research directors</li>
+<li><strong>Fidelity Executives</strong>: Investment committee members and fund managers</li>
+<li><strong>AIBC Leadership</strong>: Academic leaders and industry practitioners</li>
+<li><strong>External Experts</strong>: Independent investment professionals and consultants</li>
+</ul>
+<p><strong>Presentation Content</strong>:</p>
+<ul>
+<li><strong>Strategy Overview</strong>: Comprehensive explanation of investment approach</li>
+<li><strong>Performance Analysis</strong>: Detailed breakdown of returns and risk metrics</li>
+<li><strong>Innovation Highlights</strong>: Emphasis on sentiment analysis integration</li>
+<li><strong>Implementation Plan</strong>: Practical considerations for strategy deployment</li>
+<li><strong>Q&amp;A Session</strong>: In-depth discussion of methodology and assumptions</li>
+</ul>
+<h2 id="innovation--technical-excellence">Innovation &amp; Technical Excellence</h2>
+<h3 id="sentiment-analysis-breakthrough">Sentiment Analysis Breakthrough</h3>
+<p><strong>Methodological Innovation</strong>: Our sentiment analysis framework represented a significant advancement:</p>
+<p><strong>Custom NLP Models</strong>:</p>
+<ul>
+<li><strong>Financial Lexicon</strong>: Developed domain-specific sentiment dictionary</li>
+<li><strong>Context Awareness</strong>: Implemented context-dependent sentiment scoring</li>
+<li><strong>Entity Linking</strong>: Advanced entity recognition for company-specific sentiment</li>
+<li><strong>Temporal Weighting</strong>: Time-decay functions for sentiment signal persistence</li>
+<li><strong>Cross-Asset Impact</strong>: Sentiment spillover effects across related securities</li>
+</ul>
+<p><strong>Real-Time Processing</strong>:</p>
+<ul>
+<li><strong>Streaming Data</strong>: Real-time news and social media sentiment processing</li>
+<li><strong>Low Latency</strong>: Sub-second sentiment score generation and signal transmission</li>
+<li><strong>Scalability</strong>: Distributed processing architecture for high-volume data</li>
+<li><strong>Quality Control</strong>: Automated filtering of noise and irrelevant content</li>
+<li><strong>Performance Monitoring</strong>: Real-time tracking of sentiment signal effectiveness</li>
+</ul>
+<h3 id="xgboost-optimization">XGBoost Optimization</h3>
+<p><strong>Advanced Machine Learning</strong>: State-of-the-art implementation of gradient boosting:</p>
+<p><strong>Feature Engineering Excellence</strong>:</p>
+<ul>
+<li><strong>Technical Indicators</strong>: 50+ custom technical analysis indicators</li>
+<li><strong>Fundamental Ratios</strong>: 40+ fundamental analysis metrics</li>
+<li><strong>Cross-Sectional Features</strong>: Relative ranking and percentile features</li>
+<li><strong>Time Series Features</strong>: Lagged variables and rolling statistics</li>
+<li><strong>Interaction Terms</strong>: Non-linear feature combinations and interactions</li>
+</ul>
+<p><strong>Model Validation</strong>:</p>
+<ul>
+<li><strong>Walk-Forward Analysis</strong>: Time series cross-validation with expanding window</li>
+<li><strong>Out-of-Sample Testing</strong>: Strict separation of training and testing data</li>
+<li><strong>Robustness Testing</strong>: Performance evaluation across different market conditions</li>
+<li><strong>Sensitivity Analysis</strong>: Parameter sensitivity and model stability assessment</li>
+<li><strong>Benchmark Comparison</strong>: Performance comparison against traditional models</li>
+</ul>
+<h2 id="industry-recognition--impact">Industry Recognition &amp; Impact</h2>
+<h3 id="competition-results">Competition Results</h3>
+<p><strong>Global Recognition</strong>: Achievement of 1st runner-up position among 2000+ participants:</p>
+<p><strong>Performance Ranking</strong>:</p>
+<ul>
+<li><strong>Overall Score</strong>: 94.7/100 points across all evaluation criteria</li>
+<li><strong>Technical Excellence</strong>: 98/100 for model innovation and implementation</li>
+<li><strong>Risk Management</strong>: 92/100 for risk control and portfolio construction</li>
+<li><strong>Presentation Quality</strong>: 96/100 for communication and documentation</li>
+<li><strong>Innovation Factor</strong>: 97/100 for novel approaches and methodologies</li>
+</ul>
+<p><strong>Peer Recognition</strong>:</p>
+<ul>
+<li><strong>Industry Attention</strong>: Featured in competition highlights and case studies</li>
+<li><strong>Academic Interest</strong>: Research methodology adopted by university programs</li>
+<li><strong>Professional Network</strong>: Connections established with industry leaders</li>
+<li><strong>Media Coverage</strong>: Coverage in financial technology and academic publications</li>
+<li><strong>Speaking Opportunities</strong>: Invitations to present at industry conferences</li>
+</ul>
+<h3 id="professional-opportunities">Professional Opportunities</h3>
+<p><strong>Career Development</strong>: Competition success opened numerous professional pathways:</p>
+<p><strong>Recruitment Interest</strong>:</p>
+<ul>
+<li><strong>Point 72</strong>: Direct recruitment discussions for quantitative research roles</li>
+<li><strong>Fidelity</strong>: Internship offers in portfolio management and research</li>
+<li><strong>Hedge Funds</strong>: Multiple offers from leading alternative investment firms</li>
+<li><strong>Asset Managers</strong>: Opportunities with traditional long-only investment firms</li>
+<li><strong>Fintech Companies</strong>: Roles in quantitative research and product development</li>
+</ul>
+<p><strong>Industry Connections</strong>:</p>
+<ul>
+<li><strong>Mentorship</strong>: Ongoing mentorship from competition judges and industry professionals</li>
+<li><strong>Research Collaboration</strong>: Invitations for joint research projects and publications</li>
+<li><strong>Advisory Roles</strong>: Opportunities to advise fintech startups and investment firms</li>
+<li><strong>Speaking Engagements</strong>: Conference presentations and panel discussions</li>
+<li><strong>Professional Networks</strong>: Access to exclusive industry networks and events</li>
+</ul>
+<h2 id="technical-skills-development">Technical Skills Development</h2>
+<h3 id="advanced-programming">Advanced Programming</h3>
+<p><strong>Technical Proficiency</strong>: Significant enhancement of programming and technical skills:</p>
+<p><strong>Python Ecosystem</strong>:</p>
+<ul>
+<li><strong>Data Science</strong>: Pandas, NumPy, SciPy for data manipulation and analysis</li>
+<li><strong>Machine Learning</strong>: Scikit-learn, XGBoost, LightGBM for model development</li>
+<li><strong>Deep Learning</strong>: TensorFlow, PyTorch for neural network implementation</li>
+<li><strong>Visualization</strong>: Matplotlib, Seaborn, Plotly for data visualization</li>
+<li><strong>Financial Libraries</strong>: QuantLib, Zipline, PyPortfolioOpt for financial modeling</li>
+</ul>
+<p><strong>Database Management</strong>:</p>
+<ul>
+<li><strong>SQL</strong>: Advanced SQL for data extraction and manipulation</li>
+<li><strong>NoSQL</strong>: MongoDB for unstructured data storage and retrieval</li>
+<li><strong>Time Series</strong>: InfluxDB for high-frequency financial data storage</li>
+<li><strong>Cloud Platforms</strong>: AWS, Google Cloud for scalable data processing</li>
+<li><strong>Data Pipelines</strong>: Apache Airflow for automated data workflows</li>
+</ul>
+<h3 id="financial-technology">Financial Technology</h3>
+<p><strong>Industry Tools</strong>: Mastery of professional financial technology platforms:</p>
+<p><strong>Bloomberg Terminal</strong>:</p>
+<ul>
+<li><strong>Data Extraction</strong>: Advanced Bloomberg functions and API usage</li>
+<li><strong>Portfolio Analytics</strong>: Risk attribution and performance analysis</li>
+<li><strong>Screening Tools</strong>: Equity and fixed income screening capabilities</li>
+<li><strong>News and Research</strong>: Real-time information and research integration</li>
+<li><strong>Excel Integration</strong>: Automated reporting and analysis workflows</li>
+</ul>
+<p><strong>Alternative Platforms</strong>:</p>
+<ul>
+<li><strong>FactSet</strong>: Portfolio analytics and risk management tools</li>
+<li><strong>Refinitiv</strong>: Market data and news analytics</li>
+<li><strong>Morningstar</strong>: Investment research and analysis platforms</li>
+<li><strong>S&amp;P Capital IQ</strong>: Financial data and analytics</li>
+<li><strong>Wind Database</strong>: Asian market data and research tools</li>
+</ul>
+<h2 id="research-methodology--academic-rigor">Research Methodology &amp; Academic Rigor</h2>
+<h3 id="systematic-research-approach">Systematic Research Approach</h3>
+<p><strong>Academic Standards</strong>: Application of rigorous academic methodology:</p>
+<p><strong>Literature Review</strong>:</p>
+<ul>
+<li><strong>Academic Papers</strong>: Comprehensive review of 100+ academic papers</li>
+<li><strong>Industry Research</strong>: Analysis of practitioner research and white papers</li>
+<li><strong>Regulatory Studies</strong>: Review of regulatory research and policy papers</li>
+<li><strong>Historical Analysis</strong>: Study of historical market patterns and anomalies</li>
+<li><strong>Cross-Market Studies</strong>: Comparative analysis across different markets and regions</li>
+</ul>
+<p><strong>Hypothesis Development</strong>:</p>
+<ul>
+<li><strong>Theoretical Framework</strong>: Clear articulation of underlying economic theory</li>
+<li><strong>Testable Hypotheses</strong>: Specific, measurable, and falsifiable hypotheses</li>
+<li><strong>Statistical Testing</strong>: Rigorous statistical testing of research hypotheses</li>
+<li><strong>Robustness Checks</strong>: Multiple validation approaches and sensitivity analysis</li>
+<li><strong>Peer Review</strong>: Collaborative review and validation of research methodology</li>
+</ul>
+<h3 id="statistical-validation">Statistical Validation</h3>
+<p><strong>Rigorous Testing</strong>: Comprehensive statistical validation of research findings:</p>
+<p><strong>Performance Metrics</strong>:</p>
+<ul>
+<li><strong>Risk-Adjusted Returns</strong>: Sharpe ratio, Sortino ratio, and Calmar ratio</li>
+<li><strong>Benchmark Comparison</strong>: Alpha, beta, and tracking error analysis</li>
+<li><strong>Drawdown Analysis</strong>: Maximum drawdown, average drawdown, and recovery time</li>
+<li><strong>Tail Risk</strong>: Value at Risk (VaR) and Conditional Value at Risk (CVaR)</li>
+<li><strong>Factor Attribution</strong>: Performance attribution to systematic risk factors</li>
+</ul>
+<p><strong>Statistical Tests</strong>:</p>
+<ul>
+<li><strong>Significance Testing</strong>: T-tests and non-parametric tests for statistical significance</li>
+<li><strong>Stationarity Tests</strong>: Augmented Dickey-Fuller and KPSS tests for time series</li>
+<li><strong>Cointegration Analysis</strong>: Johansen test for long-term relationships</li>
+<li><strong>Regime Detection</strong>: Markov switching models for structural breaks</li>
+<li><strong>Bootstrap Methods</strong>: Bootstrap confidence intervals and significance testing</li>
+</ul>
+<h2 id="lessons-learned--future-applications">Lessons Learned &amp; Future Applications</h2>
+<h3 id="technical-insights">Technical Insights</h3>
+<p><strong>Key Learning Outcomes</strong>: Valuable insights for future research and development:</p>
+<p><strong>Model Development</strong>:</p>
+<ul>
+<li><strong>Feature Importance</strong>: Critical importance of feature selection and engineering</li>
+<li><strong>Overfitting Prevention</strong>: Necessity of robust validation and regularization</li>
+<li><strong>Ensemble Benefits</strong>: Advantages of combining multiple modeling approaches</li>
+<li><strong>Data Quality</strong>: Fundamental importance of clean, reliable data sources</li>
+<li><strong>Implementation Reality</strong>: Practical considerations for live trading deployment</li>
+</ul>
+<p><strong>Risk Management</strong>:</p>
+<ul>
+<li><strong>Position Sizing</strong>: Critical importance of appropriate position sizing</li>
+<li><strong>Correlation Risk</strong>: Need for dynamic correlation modeling and monitoring</li>
+<li><strong>Regime Changes</strong>: Importance of adaptive models for changing market conditions</li>
+<li><strong>Liquidity Considerations</strong>: Impact of liquidity constraints on portfolio construction</li>
+<li><strong>Transaction Costs</strong>: Realistic modeling of implementation costs and market impact</li>
+</ul>
+<h3 id="professional-development">Professional Development</h3>
+<p><strong>Career Growth</strong>: Significant personal and professional development:</p>
+<p><strong>Leadership Skills</strong>:</p>
+<ul>
+<li><strong>Team Management</strong>: Effective coordination of diverse, multidisciplinary teams</li>
+<li><strong>Project Planning</strong>: Systematic approach to complex, long-term projects</li>
+<li><strong>Communication</strong>: Clear presentation of technical concepts to diverse audiences</li>
+<li><strong>Problem Solving</strong>: Creative solutions to complex technical and practical challenges</li>
+<li><strong>Decision Making</strong>: Data-driven decision making under uncertainty and time pressure</li>
+</ul>
+<p><strong>Industry Knowledge</strong>:</p>
+<ul>
+<li><strong>Market Structure</strong>: Deep understanding of financial market mechanics and structure</li>
+<li><strong>Regulatory Environment</strong>: Awareness of regulatory constraints and compliance requirements</li>
+<li><strong>Technology Trends</strong>: Insight into emerging technologies and their financial applications</li>
+<li><strong>Client Needs</strong>: Understanding of institutional investor requirements and constraints</li>
+<li><strong>Competitive Landscape</strong>: Knowledge of industry best practices and competitive dynamics</li>
+</ul>
+<h2 id="future-research-directions">Future Research Directions</h2>
+<h3 id="ongoing-development">Ongoing Development</h3>
+<p><strong>Continued Innovation</strong>: Building on competition success for future research:</p>
+<p><strong>Model Enhancement</strong>:</p>
+<ul>
+<li><strong>Deep Learning</strong>: Integration of neural networks and deep learning techniques</li>
+<li><strong>Alternative Data</strong>: Incorporation of satellite imagery, social media, and IoT data</li>
+<li><strong>Real-Time Processing</strong>: Development of ultra-low latency trading systems</li>
+<li><strong>Cross-Asset Models</strong>: Extension to multi-asset class portfolio optimization</li>
+<li><strong>ESG Integration</strong>: Incorporation of environmental, social, and governance factors</li>
+</ul>
+<p><strong>Technology Innovation</strong>:</p>
+<ul>
+<li><strong>Cloud Computing</strong>: Scalable, distributed computing for large-scale data processing</li>
+<li><strong>Artificial Intelligence</strong>: Advanced AI techniques for pattern recognition and prediction</li>
+<li><strong>Blockchain Technology</strong>: Exploration of distributed ledger applications in finance</li>
+<li><strong>Quantum Computing</strong>: Investigation of quantum algorithms for optimization problems</li>
+<li><strong>Edge Computing</strong>: Real-time processing at the network edge for ultra-low latency</li>
+</ul>
+<h3 id="industry-applications">Industry Applications</h3>
+<p><strong>Practical Implementation</strong>: Translation of research into real-world applications:</p>
+<p><strong>Product Development</strong>:</p>
+<ul>
+<li><strong>Investment Strategies</strong>: Development of systematic investment strategies for institutional clients</li>
+<li><strong>Risk Management Tools</strong>: Creation of advanced risk management and monitoring systems</li>
+<li><strong>Technology Platforms</strong>: Development of next-generation financial technology platforms</li>
+<li><strong>Research Services</strong>: Provision of quantitative research and consulting services</li>
+<li><strong>Educational Programs</strong>: Training and education programs for industry professionals</li>
+</ul>
+<p><strong>Market Impact</strong>:</p>
+<ul>
+<li><strong>Industry Standards</strong>: Contribution to industry best practices and standards</li>
+<li><strong>Regulatory Input</strong>: Participation in regulatory discussions and policy development</li>
+<li><strong>Academic Collaboration</strong>: Ongoing collaboration with academic institutions and researchers</li>
+<li><strong>Innovation Ecosystem</strong>: Support for fintech innovation and entrepreneurship</li>
+<li><strong>Knowledge Sharing</strong>: Publication and dissemination of research findings and methodologies</li>
+</ul>
+<p>This competition experience represents a transformative milestone in my quantitative finance career, providing both technical validation and professional recognition that continues to influence my research interests and career trajectory. The combination of advanced technical skills, industry knowledge, and professional networks established through this competition provides a strong foundation for future contributions to the field of quantitative finance and investment management.</p>
+
         </div>
 
-        <div class="media-placeholder" data-media-type="image">
-            <h3>🏆 Award Ceremony & Competition Photos</h3>
-            <p>Upload photos from the award ceremony, team presentations, and competition events here.</p>
+        {{#if technologies}}
+        <div class="project-detail-section tech-section">
+            <h2>Technologies Used</h2>
+            <div class="tech-tags">
+                <ul class="technologies-list"><li>XGBoost</li><li>Python</li><li>Bloomberg Terminal</li><li>Natural Language Processing</li><li>Sentiment Analysis</li></ul>
+            </div>
         </div>
+        {{/if}}
 
-        <div class="project-detail-section">
-            <h2>My Leadership Role</h2>
-            <p>
-                As the team leader, I spearheaded the data collection and quantitative modeling efforts. My key 
-                responsibilities included:
-            </p>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Led comprehensive data collection from Bloomberg Terminal and alternative data sources</li>
-                <li>Designed and implemented the core quantitative modeling framework</li>
-                <li>Integrated sentiment analysis into our forecasting models</li>
-                <li>Developed XGBoost-based prediction algorithms</li>
-                <li>Coordinated team research efforts and presentation preparation</li>
-            </ul>
+        {{#if project_links}}
+        <div class="project-detail-section links-section">
+            <h2>Project Links</h2>
+            <div class="project-links">
+                <div class="project-links"><a href="#" class="project-link primary">Competition Results</a><a href="https://point72.com" class="project-link secondary">Point 72 Website</a></div>
+            </div>
         </div>
-
-        <div class="project-detail-section">
-            <h2>Technical Innovation</h2>
-            <p>
-                Our winning strategy incorporated several cutting-edge techniques that set us apart from other teams:
-            </p>
-            
-            <h3>1. Advanced Sentiment Analysis</h3>
-            <p>
-                We developed a sophisticated sentiment analysis framework that processed news articles, social media data, 
-                and analyst reports to gauge market sentiment. This alternative data source provided unique insights 
-                into market movements that traditional fundamental analysis might miss.
-            </p>
-
-            <h3>2. XGBoost Ensemble Models</h3>
-            <p>
-                Implemented gradient boosting algorithms using XGBoost to create robust prediction models. The ensemble 
-                approach combined multiple weak learners to generate more accurate forecasts while reducing overfitting risks.
-            </p>
-
-            <h3>3. Bloomberg Data Integration</h3>
-            <p>
-                Leveraged Bloomberg Terminal's extensive financial database to collect high-quality market data, 
-                fundamental metrics, and real-time pricing information. This professional-grade data formed the 
-                foundation of our quantitative models.
-            </p>
-        </div>
-
-        <div class="media-placeholder" data-media-type="video">
-            <h3>🎥 Final Presentation Video</h3>
-            <p>Upload the final presentation video showcasing the investment strategy and methodology here.</p>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Data Sources & Methodology</h2>
-            <p>
-                Our comprehensive approach utilized multiple data sources and analytical techniques:
-            </p>
-            
-            <h3>Primary Data Sources:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Bloomberg Terminal:</strong> Real-time market data, historical prices, fundamental metrics</li>
-                <li><strong>News APIs:</strong> Financial news articles and press releases</li>
-                <li><strong>Social Media:</strong> Twitter sentiment and Reddit discussions</li>
-                <li><strong>Analyst Reports:</strong> Professional research and recommendations</li>
-                <li><strong>Economic Indicators:</strong> Macroeconomic data and government statistics</li>
-            </ul>
-
-            <h3>Analytical Framework:</h3>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Natural Language Processing for sentiment extraction</li>
-                <li>Feature engineering and dimensionality reduction</li>
-                <li>Cross-validation and backtesting procedures</li>
-                <li>Risk management and portfolio optimization</li>
-                <li>Performance attribution analysis</li>
-            </ul>
-        </div>
-
-        <div class="media-placeholder" data-media-type="image">
-            <h3>📊 Model Performance & Analytics</h3>
-            <p>Upload charts showing model performance, backtesting results, and analytical insights here.</p>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Key Technologies & Tools</h2>
-            <p>
-                The project leveraged a comprehensive technology stack:
-            </p>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li><strong>Python:</strong> Primary programming language for all development</li>
-                <li><strong>XGBoost:</strong> Gradient boosting framework for machine learning</li>
-                <li><strong>NLTK & spaCy:</strong> Natural language processing libraries</li>
-                <li><strong>Bloomberg API:</strong> Professional financial data access</li>
-                <li><strong>Pandas & NumPy:</strong> Data manipulation and numerical computing</li>
-                <li><strong>Scikit-learn:</strong> Machine learning algorithms and tools</li>
-                <li><strong>Matplotlib & Plotly:</strong> Data visualization and interactive charts</li>
-                <li><strong>Jupyter Notebooks:</strong> Research and development environment</li>
-            </ul>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Competition Results & Recognition</h2>
-            <p>
-                Our exceptional performance in the competition yielded significant achievements:
-            </p>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>🥈 Global 1st Runner-up position (2nd place)</li>
-                <li>Competed against 2000+ global applicants</li>
-                <li>Recognition from Point 72, Fidelity, and AIBC judges</li>
-                <li>Invitation to present at industry networking events</li>
-                <li>Mentorship opportunities with industry professionals</li>
-                <li>Enhanced reputation in quantitative finance community</li>
-            </ul>
-        </div>
-
-        <div class="media-placeholder" data-media-type="document">
-            <h3>📄 Research Documentation & Code</h3>
-            <p>Upload research papers, technical documentation, and code repositories here.</p>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Industry Impact & Applications</h2>
-            <p>
-                The innovative approaches developed during this competition have broader applications in the 
-                asset management industry:
-            </p>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Alternative data integration in investment decision-making</li>
-                <li>Real-time sentiment analysis for market timing</li>
-                <li>Machine learning applications in portfolio management</li>
-                <li>Risk management through advanced analytics</li>
-                <li>Automated trading strategy development</li>
-            </ul>
-        </div>
-
-        <div class="project-detail-section">
-            <h2>Professional Development</h2>
-            <p>
-                This competition significantly advanced my professional development in several key areas:
-            </p>
-            <ul style="margin-left: 20px; margin-bottom: 20px;">
-                <li>Advanced quantitative research methodologies</li>
-                <li>Professional-grade financial data analysis</li>
-                <li>Machine learning applications in finance</li>
-                <li>Team leadership and project management</li>
-                <li>Industry networking and professional relationships</li>
-                <li>Presentation and communication skills</li>
-            </ul>
-        </div>
-
-        <div class="media-placeholder" data-media-type="video">
-            <h3>🎤 Interview & Testimonials</h3>
-            <p>Upload interview videos, testimonials from judges, and team reflections here.</p>
-        </div>
-
-        <!-- Project Links -->
-        <div class="project-links">
-            <a href="#" class="project-link primary">View Competition Results</a>
-            <a href="#" class="project-link">Point 72 Website</a>
-            <a href="#" class="project-link">Fidelity Investments</a>
-            <a href="../assets/documents/point72_certificate.pdf" class="project-link">Download Certificate</a>
-        </div>
+        {{/if}}
     </div>
 
     <!-- JavaScript -->
     <script src="../js/main.js"></script>
 </body>
 </html>
-
